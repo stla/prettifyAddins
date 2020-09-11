@@ -1,0 +1,9 @@
+Name: Prettify
+Description: Prettify JavaScript/JSX/HTML/CSS/SCSS/Markdown.
+Binding: prettify
+Interactive: true
+
+Name: Indent
+Description: Indent JavaScript/JSX/HTML/CSS/SCSS.
+Binding: indentify
+Interactive: true
