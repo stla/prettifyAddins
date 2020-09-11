@@ -18,7 +18,7 @@ prettify <- function(){
     scss = "scss"
   )
   if(is.null(language)){
-    message("Unrecognized language.")
+    message("Unrecognized or unsupported language.")
     return(invisible())
   }
   themeInfo <- getThemeInfo()
@@ -48,7 +48,7 @@ indentify <- function(){
     scss = "scss"
   )
   if(is.null(language)){
-    message("Unrecognized language.")
+    message("Unrecognized or unsupported language.")
     return(invisible())
   }
   themeInfo <- getThemeInfo()

@@ -47,7 +47,7 @@ shinyServer(function(input, output, session){
   )
 
   observeEvent(input[["prettifyError"]], {
-    message("An error occured.")
+    message("An error occured. This is possibly due to invalid code.")
     stopApp()
   })
 
