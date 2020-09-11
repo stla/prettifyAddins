@@ -11,10 +11,16 @@ shinyUI(miniPage(
 
   tags$head(
     if(dark){
-      tags$style(HTML(".gadget-title {background-color: rgb(21,21,21)}"))
+      tags$style(
+        HTML(
+          ".gadget-title {background-color: rgb(21,21,21)}",
+          ".btn-primary {background-color: crimson; border-color: crimson}"
+        )
+      )
     }else{
       tags$style(HTML(".gadget-title {background-color: #f5f5f5}"))
     },
+    tags$style(HTML(".btn {width: 45%}")),
     tags$script(src = "prettier/standalone.js"),
     tags$script(src = "prettier/parser-babel.js"),
     tags$script(src = "prettier/parser-html.js"),
