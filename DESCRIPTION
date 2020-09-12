@@ -19,7 +19,7 @@ Authors@R: c(
       comment = "'indent.js' library"
     )
   )
-Description: Provides 'RStudio' addins to prettify HTML, CSS, SCSS, JavaScript, JSX, and Markdown code.
+Description: Provides 'RStudio' addins to prettify HTML, CSS, SCSS, JavaScript, JSX, and Markdown code. Two addins are provided: 'Prettify' and 'Indent'. The 'Indent' addin only reindents the code, while the 'Prettify' addin also modifies the code, e.g. it adds trailing semi-colons to JavaScript code when they are missing.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
