@@ -1,13 +1,29 @@
 Package: prettifyAddins
 Type: Package
-Title: What the Package Does (Title Case)
+Title: 'RStudio' Addins to Prettify HTML, CSS, JavaScript, and More.
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Authors@R: c(
+    person(
+      "Stéphane", "Laurent", 
+      role = c("aut", "cre"),
+      email = "laurent_step@yahoo.fr"
+    ),
+    person(
+      "James Long and contributors",
+      role = c("ctb", "cph"),
+      comment = "'Prettier' library"
+    ),
+    person(
+      "Zeb", "Zhao",
+      role = c("ctb","cph"),
+      comment = "'indent.js' library"
+    )
+  )
+Description: Provides 'RStudio' addins to prettify HTML, CSS, SCSS, JavaScript, JSX, and Markdown code.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports: shiny, shinythemes, shinyAce, miniUI, rstudioapi, tools
+URL: https://github.com/stla/prettifyAddins
+BugReports: https://github.com/stla/prettifyAddins/issues
 RoxygenNote: 7.1.1
