@@ -6,7 +6,7 @@ Authors@R: c(
     person(
       "Stéphane", "Laurent", 
       role = c("aut", "cre"),
-      email = "laurent_step@yahoo.fr"
+      email = "laurent_step@outlook.fr"
     ),
     person(
       "James Long and contributors",
