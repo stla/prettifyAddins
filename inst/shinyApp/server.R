@@ -2,9 +2,9 @@ library(rstudioapi)
 
 context <- getOption("prettify.context")
 language <- getOption("prettify.language")
-contents <- context[["contents"]]
-code <- paste0(contents, collapse = "\n")
+code <- getOption("prettify.code")
 id <- context[["id"]]
+codemirror <- getOption("prettify.codemirror")
 
 action <- getOption("prettify.action")
 
@@ -19,14 +19,18 @@ if(action == "prettify"){
     scss = "css"
   )
 }else{
-  parser <- switch(
-    language,
-    css = "css",
-    html = "html",
-    javascript = "js",
-    jsx = "js",
-    scss = "css"
-  )
+  if(codemirror){
+    parser <- language
+  }else{
+    parser <- switch(
+      language,
+      css = "css",
+      html = "html",
+      javascript = "js",
+      jsx = "js",
+      scss = "css"
+    )
+  }
 }
 
 
@@ -52,6 +56,7 @@ shinyServer(function(input, output, session){
   })
 
   observeEvent(input[["prettyCode"]], {
+    req(!codemirror)
     updateAceEditor(
       session, "editor",
       mode = language, value = input[["prettyCode"]]

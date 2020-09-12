@@ -10,6 +10,7 @@ prettify <- function(){
     tolower(ext),
     css = "css",
     html = "html",
+    rhtml = "html",
     js = "javascript",
     jsx = "jsx",
     md = "markdown",
@@ -24,11 +25,14 @@ prettify <- function(){
   themeInfo <- getThemeInfo()
   theme <- gsub(" ", "_", tolower(themeInfo[["editor"]]))
   dark <- themeInfo[["dark"]]
+  code <- paste0(context[["contents"]], collapse = "\n")
   options(prettify.context = context)
+  options(prettify.code = code)
   options(prettify.language = language)
   options(prettify.theme = theme)
   options(prettify.dark = dark)
   options(prettify.action = "prettify")
+  options(prettify.codemirror = FALSE)
   runGadget(
     shinyAppDir(
       system.file("shinyApp", package = "prettifyAddins")
@@ -43,9 +47,24 @@ indentify <- function(){
     tolower(ext),
     css = "css",
     html = "html",
+    rhtml = "html",
     js = "javascript",
     jsx = "jsx",
-    scss = "scss"
+    scss = "scss",
+    c = "text/x-csrc",
+    cpp = "text/x-c++src",
+    "c++" = "text/x-c++src",
+    h = "text/x-csrc",
+    hpp = "text/x-c++src",
+    hs = "haskell",
+    java = "text/x-java",
+    jl = "julia",
+    py = "python",
+    sas = "sas",
+    sh = "shell",
+    sql = "sql",
+    tex = "stex",
+    rnw = "stex"
   )
   if(is.null(language)){
     message("Unrecognized or unsupported language.")
@@ -54,11 +73,17 @@ indentify <- function(){
   themeInfo <- getThemeInfo()
   theme <- gsub(" ", "_", tolower(themeInfo[["editor"]]))
   dark <- themeInfo[["dark"]]
+  code <- paste0(context[["contents"]], collapse = "\n")
   options(prettify.context = context)
+  options(prettify.code = code)
   options(prettify.language = language)
   options(prettify.theme = theme)
   options(prettify.dark = dark)
   options(prettify.action = "indentify")
+  codemirror = !is.element(
+    language, c("css", "html", "javascript", "jsx", "scss")
+  )
+  options(prettify.codemirror = codemirror)
   runGadget(
     shinyAppDir(
       system.file("shinyApp", package = "prettifyAddins")
