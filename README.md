@@ -1,6 +1,6 @@
 # **prettifyAddins**
 
-#### RStudio addins to prettify JavaScript / JSX / HTML / CSS / SCSS / Markdown.
+### RStudio addins to prettify JavaScript / JSX / HTML / CSS / SCSS / Markdown.
 
 **JavaScript example:**
 
