@@ -17,6 +17,11 @@ Authors@R: c(
       "Zeb", "Zhao",
       role = c("ctb","cph"),
       comment = "'indent.js' library"
+    ),
+    person(
+      "Marijn", "Haverbeke",
+      role = c("ctb", "cph"),
+      comment = "'CodeMirror' library"
     )
   )
 Description: Provides 'RStudio' addins to prettify HTML, CSS, SCSS, JavaScript, JSX, and Markdown code. Two addins are provided: 'Prettify' and 'Indent'. The 'Indent' addin only reindents the code, while the 'Prettify' addin also modifies the code, e.g. it adds trailing semi-colons to JavaScript code when they are missing.
