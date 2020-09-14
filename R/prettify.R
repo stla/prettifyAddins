@@ -56,15 +56,12 @@ indentify <- function(){
     "c++" = "text/x-c++src",
     h = "text/x-csrc",
     hpp = "text/x-c++src",
-    hs = "haskell",
     java = "text/x-java",
     jl = "julia",
     py = "python",
     sas = "sas",
     sh = "shell",
-    sql = "sql",
-    tex = "stex",
-    rnw = "stex"
+    sql = "sql"
   )
   if(is.null(language)){
     message("Unrecognized or unsupported language.")
