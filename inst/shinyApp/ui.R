@@ -36,13 +36,11 @@ shinyUI(miniPage(
         ),
         tags$script(src = "codemirror/mode/meta.js"),
         tags$script(src = "codemirror/mode/clike/clike.js"),
-        tags$script(src = "codemirror/mode/haskell/haskell.js"),
         tags$script(src = "codemirror/mode/julia/julia.js"),
         tags$script(src = "codemirror/mode/python/python.js"),
         tags$script(src = "codemirror/mode/sas/sas.js"),
         tags$script(src = "codemirror/mode/shell/shell.js"),
         tags$script(src = "codemirror/mode/sql/sql.js"),
-        tags$script(src = "codemirror/mode/stex/stex.js"),
         tags$script(src = "autoFormatRange.js"),
         tags$link(rel = "stylesheet", href = "prettify.css")
       )
