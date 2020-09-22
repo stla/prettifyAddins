@@ -1,4 +1,3 @@
-
 function indentify(codeAndParser) {
   var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
     lineNumbers: true,
@@ -22,4 +21,3 @@ function indentify(codeAndParser) {
 $(document).on("shiny:connected", function() {
   Shiny.addCustomMessageHandler("indentify", indentify);
 });
-

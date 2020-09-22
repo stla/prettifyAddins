@@ -38,4 +38,3 @@ $(document).on("shiny:connected", function() {
   Shiny.addCustomMessageHandler("prettify", prettify);
   Shiny.addCustomMessageHandler("indentify", indentify);
 });
-

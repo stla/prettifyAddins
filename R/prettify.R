@@ -10,7 +10,7 @@ prettify <- function(){
     tolower(ext),
     css = "css",
     html = "html",
-    rhtml = "html",
+    rhtml = "rhtml",
     js = "javascript",
     jsx = "jsx",
     md = "markdown",
@@ -36,7 +36,8 @@ prettify <- function(){
   runGadget(
     shinyAppDir(
       system.file("shinyApp", package = "prettifyAddins")
-    )
+    ),
+    stopOnCancel = FALSE
   )
 }
 
@@ -47,7 +48,7 @@ indentify <- function(){
     tolower(ext),
     css = "css",
     html = "html",
-    rhtml = "html",
+    rhtml = "rhtml",
     js = "javascript",
     jsx = "jsx",
     scss = "scss",
@@ -84,6 +85,7 @@ indentify <- function(){
   runGadget(
     shinyAppDir(
       system.file("shinyApp", package = "prettifyAddins")
-    )
+    ),
+    stopOnCancel = FALSE
   )
 }

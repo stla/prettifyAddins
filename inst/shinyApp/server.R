@@ -13,6 +13,7 @@ if(action == "prettify"){
     language,
     css = "css",
     html = "html",
+    rhtml = "html",
     javascript = "babel",
     jsx = "babel",
     markdown = "markdown",
@@ -26,6 +27,7 @@ if(action == "prettify"){
       language,
       css = "css",
       html = "html",
+      rhtml = "html",
       javascript = "js",
       jsx = "js",
       scss = "css"
