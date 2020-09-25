@@ -13,3 +13,7 @@ Description: Prettify JavaScript/JSX/HTML/CSS/SCSS/Markdown.
 Binding: prettifyV8
 Interactive: false
 
+Name: Indent (V8)
+Description: Indent JavaScript/JSX/HTML/CSS/SCSS.
+Binding: indentifyV8
+Interactive: false

@@ -76,3 +76,63 @@ prettifyV8 <- function(){
   setDocumentContents(text = result[["prettyCode"]], id = context[["id"]])
   return(invisible())
 }
+
+
+indentifyV8 <- function(){
+  context <- getSourceEditorContext()
+  ext <- file_ext(context[["path"]])
+  parser <- switch(
+    tolower(ext),
+    css = "css",
+    html = "html",
+    rhtml = "html",
+    js = "js",
+    jsx = "js",
+    scss = "css"
+  )
+  if(is.null(parser)){
+    message("Unrecognized or unsupported language.")
+    return(invisible())
+  }
+  code <- paste0(context[["contents"]], collapse = "\n")
+  jsfile <- system.file(
+    "shinyApp", "www", "indent", "indent.min.js", package = "prettifyAddins"
+  )
+  ctx <- v8(console = FALSE)
+  ctx$source(jsfile)
+  indentify <- paste0(
+    c(
+      "function indentify(code, parser) {",
+      "  var prettyCode = null, error = null;",
+      "  try {",
+      "    switch(parser) {",
+      "      case \"js\":",
+      "        prettyCode = indent.js(code, {tabString: \"  \"});",
+      "        break;",
+      "      case \"css\":",
+      "        prettyCode = indent.css(code, {tabString: \"  \"});",
+      "        break;",
+      "      case \"html\":",
+      "        prettyCode = indent.html(code, {tabString: \"  \"});",
+      "        break;",
+      "    }",
+      "  } catch(err) {",
+      "    error = err.message;",
+      "  }",
+      "  return {prettyCode: prettyCode, error: error};",
+      "}",
+      "var result = indentify(code, parser);"
+    ),
+    collapse = "\n"
+  )
+  ctx$assign("code", code)
+  ctx$assign("parser", parser)
+  ctx$eval(indentify)
+  result <- ctx$get("result")
+  if(!is.null(err <- result[["error"]])){
+    message(err)
+    return(invisible())
+  }
+  setDocumentContents(text = result[["prettyCode"]], id = context[["id"]])
+  return(invisible())
+}

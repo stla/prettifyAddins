@@ -1,7 +1,7 @@
 Package: prettifyAddins
 Type: Package
 Title: 'RStudio' Addins to Prettify 'HTML', 'CSS', 'JavaScript', and More
-Version: 0.1.0
+Version: 1.0.0
 Authors@R: c(
     person(
       "Stéphane", "Laurent", 
