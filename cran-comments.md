@@ -1,7 +1,7 @@
 ## Release summary.
 
-First release. This package contains only two functions which are intended to 
-be run as RStudio addins.
+This is a resubmission. I quoted the language names in DESCRIPTION, as 
+requested by the CRAN team.
 
 ## Test environments
 

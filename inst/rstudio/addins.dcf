@@ -4,6 +4,6 @@ Binding: prettify
 Interactive: true
 
 Name: Indent
-Description: Indent JavaScript/JSX/HTML/CSS/SCSS.
+Description: Indent JavaScript/JSX/HTML/CSS/SCSS and more.
 Binding: indentify
 Interactive: true

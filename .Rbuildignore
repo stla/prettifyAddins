@@ -1,6 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^inst/testFiles$
+^inst/testV8$
 ^inst/screenshots$
 ^cran-comments\.md$
 ^inst/shinyApp/www/codemirror/addon$
@@ -182,3 +183,4 @@
 ^inst/shinyApp/www/codemirror/theme/yeti\.css$
 ^inst/shinyApp/www/codemirror/theme/yonce\.css$
 ^inst/shinyApp/www/codemirror/theme/zenburn\.css$
+^CRAN-RELEASE$
