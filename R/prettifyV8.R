@@ -1,9 +1,12 @@
-#' @import V8
 #' @importFrom rstudioapi getSourceEditorContext setDocumentContents
 #' @importFrom tools file_ext
 NULL
 
 prettifyV8 <- function(){
+  if(!requireNamespace("V8")){
+    message("This addin requires the 'V8' package.")
+    return(invisible())
+  }
   context <- getSourceEditorContext()
   ext <- file_ext(context[["path"]])
   parser <- switch(
@@ -29,7 +32,7 @@ prettifyV8 <- function(){
     )
   }
 
-  ctx <- v8(console = FALSE)
+  ctx <- V8::v8(console = FALSE)
   ctx$source(jsfile("standalone.js"))
   js <- switch(
     parser,
@@ -79,6 +82,10 @@ prettifyV8 <- function(){
 
 
 indentifyV8 <- function(){
+  if(!requireNamespace("V8")){
+    message("This addin requires the 'V8' package.")
+    return(invisible())
+  }
   context <- getSourceEditorContext()
   ext <- file_ext(context[["path"]])
   parser <- switch(
@@ -98,7 +105,7 @@ indentifyV8 <- function(){
   jsfile <- system.file(
     "shinyApp", "www", "indent", "indent.min.js", package = "prettifyAddins"
   )
-  ctx <- v8(console = FALSE)
+  ctx <- V8::v8(console = FALSE)
   ctx$source(jsfile)
   indentify <- paste0(
     c(
