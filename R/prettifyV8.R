@@ -33,7 +33,15 @@ prettifyV8 <- function(){
   }
 
   ctx <- V8::v8(console = FALSE)
-  ctx$source(jsfile("standalone.js"))
+  tryCatch({
+    ctx$source(jsfile("standalone.js"))
+  }, error = function(e){
+    stop(
+      "'V8' has failed to source some files. ",
+      "Probably your version of the 'V8' engine is not recent enough."
+    )
+  })
+
   js <- switch(
     parser,
     babel = "parser-babel.js",
@@ -105,8 +113,17 @@ indentifyV8 <- function(){
   jsfile <- system.file(
     "shinyApp", "www", "indent", "indent.min.js", package = "prettifyAddins"
   )
+
   ctx <- V8::v8(console = FALSE)
-  ctx$source(jsfile)
+  tryCatch({
+    ctx$source(jsfile)
+  }, error = function(e){
+    stop(
+      "'V8' has failed to source some files. ",
+      "Probably your version of the 'V8' engine is not recent enough."
+    )
+  })
+
   indentify <- paste0(
     c(
       "function indentify(code, parser) {",
