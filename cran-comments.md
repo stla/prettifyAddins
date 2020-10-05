@@ -1,10 +1,7 @@
-## Release summary.
+## Release summary
 
-This is a resubmission. I quoted the language names in DESCRIPTION, as 
-requested by the CRAN team. The CRAN team also requested that I add some 
-executable examples. But I can't: this package does not contain any function 
-to be run from the R console, it only contains some functions to be run from 
-the RStudio Addins menu.
+Second version. There is a 'NOTE' in the CRAN checks of the first version, 
+and I fixed this issue.
 
 ## Test environments
 
@@ -13,6 +10,4 @@ the RStudio Addins menu.
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
-
-* This is a new release.
+OK
