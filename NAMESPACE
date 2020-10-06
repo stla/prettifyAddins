@@ -2,6 +2,7 @@
 
 importFrom(rstudioapi,getSourceEditorContext)
 importFrom(rstudioapi,getThemeInfo)
+importFrom(rstudioapi,readRStudioPreference)
 importFrom(rstudioapi,setDocumentContents)
 importFrom(shiny,runGadget)
 importFrom(shiny,shinyAppDir)

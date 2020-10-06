@@ -1,11 +1,14 @@
 library(miniUI)
 library(shinyAce)
 library(shinythemes)
+library(rstudioapi)
 
 dark <- getOption("prettify.dark")
 theme <- ifelse(dark, "cyborg", "cosmo")
 
 codemirror <- getOption("prettify.codemirror")
+
+tabSize <- readRStudioPreference("num_spaces_for_tab", 2)
 
 shinyUI(miniPage(
 
@@ -74,7 +77,7 @@ shinyUI(miniPage(
         theme = getOption("prettify.theme"),
         fontSize = 12,
         height = "80vh",
-        tabSize = 2
+        tabSize = tabSize
       )
     }
 

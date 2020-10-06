@@ -8,6 +8,8 @@ codemirror <- getOption("prettify.codemirror")
 
 action <- getOption("prettify.action")
 
+tabSize <- readRStudioPreference("num_spaces_for_tab", 2)
+
 if(action == "prettify"){
   parser <- switch(
     language,
@@ -49,7 +51,7 @@ shinyServer(function(input, output, session){
 
   session$sendCustomMessage(
     action,
-    list(code = code, parser = parser)
+    list(code = code, parser = parser, tabSize = tabSize)
   )
 
   observeEvent(input[["prettifyError"]], {

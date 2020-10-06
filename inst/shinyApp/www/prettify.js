@@ -1,10 +1,11 @@
-function prettify(codeAndParser) {
+function prettify(codeAndParserAndTabSize) {
   var prettyCode, error;
   try {
-    prettyCode = prettier.format(codeAndParser.code, {
-      parser: codeAndParser.parser,
+    prettyCode = prettier.format(codeAndParserAndTabSize.code, {
+      parser: codeAndParserAndTabSize.parser,
       plugins: prettierPlugins,
-      trailingComma: "none"
+      trailingComma: "none",
+      tabWidth: codeAndParserAndTabSize.tabSize
     });
     Shiny.setInputValue("prettyCode", prettyCode, { priority: "event" });
   } catch(err) {
@@ -13,18 +14,22 @@ function prettify(codeAndParser) {
   }
 }
 
-function indentify(codeAndParser) {
+function indentify(codeAndParserAndTabSize) {
   var prettyCode, error;
+  var tabString = " ".repeat(codeAndParserAndTabSize.tabSize);
   try {
-    switch(codeAndParser.parser) {
+    switch(codeAndParserAndTabSize.parser) {
       case "js":
-        prettyCode = indent.js(codeAndParser.code, {tabString: "  "});
+        prettyCode =
+          indent.js(codeAndParserAndTabSize.code, {tabString: tabString});
         break;
       case "css":
-        prettyCode = indent.css(codeAndParser.code, {tabString: "  "});
+        prettyCode =
+          indent.css(codeAndParserAndTabSize.code, {tabString: tabString});
         break;
       case "html":
-        prettyCode = indent.html(codeAndParser.code, {tabString: "  "});
+        prettyCode =
+          indent.html(codeAndParserAndTabSize.code, {tabString: tabString});
         break;
     }
     Shiny.setInputValue("prettyCode", prettyCode, { priority: "event" });

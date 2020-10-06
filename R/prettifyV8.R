@@ -1,4 +1,4 @@
-#' @importFrom rstudioapi getSourceEditorContext setDocumentContents
+#' @importFrom rstudioapi getSourceEditorContext setDocumentContents readRStudioPreference
 #' @importFrom tools file_ext
 NULL
 
@@ -59,25 +59,27 @@ prettifyV8 <- function(){
   }
   prettify <- paste0(
     c(
-      "function prettify(code, parser) {",
+      "function prettify(code, parser, tabSize) {",
       "  var prettyCode = null, error = null;",
       "  try {",
       "    prettyCode = prettier.format(code, {",
       "      parser: parser,",
       "      plugins: prettierPlugins,",
-      "      trailingComma: \"none\"",
+      "      trailingComma: \"none\",",
+      "      tabWidth: tabSize",
       "    });",
       "  } catch(err) {",
       "    error = err.message;",
       "  }",
       "  return {prettyCode: prettyCode, error: error};",
       "}",
-      "var result = prettify(code, parser);"
+      "var result = prettify(code, parser, tabSize);"
     ),
     collapse = "\n"
   )
   ctx$assign("code", code)
   ctx$assign("parser", parser)
+  ctx$assign("tabSize", readRStudioPreference("num_spaces_for_tab", 2))
   ctx$eval(prettify)
   result <- ctx$get("result")
   if(!is.null(err <- result[["error"]])){
@@ -126,18 +128,19 @@ indentifyV8 <- function(){
 
   indentify <- paste0(
     c(
-      "function indentify(code, parser) {",
+      "function indentify(code, parser, tabSize) {",
       "  var prettyCode = null, error = null;",
+      "  var tabString = \" \".repeat(tabSize);",
       "  try {",
       "    switch(parser) {",
       "      case \"js\":",
-      "        prettyCode = indent.js(code, {tabString: \"  \"});",
+      "        prettyCode = indent.js(code, {tabString: tabString});",
       "        break;",
       "      case \"css\":",
-      "        prettyCode = indent.css(code, {tabString: \"  \"});",
+      "        prettyCode = indent.css(code, {tabString: tabString});",
       "        break;",
       "      case \"html\":",
-      "        prettyCode = indent.html(code, {tabString: \"  \"});",
+      "        prettyCode = indent.html(code, {tabString: tabString});",
       "        break;",
       "    }",
       "  } catch(err) {",
@@ -145,12 +148,13 @@ indentifyV8 <- function(){
       "  }",
       "  return {prettyCode: prettyCode, error: error};",
       "}",
-      "var result = indentify(code, parser);"
+      "var result = indentify(code, parser, tabSize);"
     ),
     collapse = "\n"
   )
   ctx$assign("code", code)
   ctx$assign("parser", parser)
+  ctx$assign("tabSize", readRStudioPreference("num_spaces_for_tab", 2))
   ctx$eval(indentify)
   result <- ctx$get("result")
   if(!is.null(err <- result[["error"]])){
