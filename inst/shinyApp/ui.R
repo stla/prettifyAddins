@@ -8,7 +8,8 @@ theme <- ifelse(dark, "cyborg", "cosmo")
 
 codemirror <- getOption("prettify.codemirror")
 
-tabSize <- readRStudioPreference("num_spaces_for_tab", 2)
+tabSize <- getOption("prettify.tabSize")
+
 
 shinyUI(miniPage(
 

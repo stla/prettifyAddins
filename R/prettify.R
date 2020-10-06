@@ -33,6 +33,7 @@ prettify <- function(){
   options(prettify.dark = dark)
   options(prettify.action = "prettify")
   options(prettify.codemirror = FALSE)
+  options(prettify.tabSize = getTabSize())
   runGadget(
     shinyAppDir(
       system.file("shinyApp", package = "prettifyAddins")
@@ -78,6 +79,7 @@ indentify <- function(){
   options(prettify.theme = theme)
   options(prettify.dark = dark)
   options(prettify.action = "indentify")
+  options(prettify.tabSize = getTabSize())
   codemirror = !is.element(
     language, c("css", "html", "javascript", "jsx", "scss")
   )

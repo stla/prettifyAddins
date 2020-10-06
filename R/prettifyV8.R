@@ -1,4 +1,4 @@
-#' @importFrom rstudioapi getSourceEditorContext setDocumentContents readRStudioPreference
+#' @importFrom rstudioapi getSourceEditorContext setDocumentContents
 #' @importFrom tools file_ext
 NULL
 
@@ -79,7 +79,7 @@ prettifyV8 <- function(){
   )
   ctx$assign("code", code)
   ctx$assign("parser", parser)
-  ctx$assign("tabSize", readRStudioPreference("num_spaces_for_tab", 2))
+  ctx$assign("tabSize", getTabSize())
   ctx$eval(prettify)
   result <- ctx$get("result")
   if(!is.null(err <- result[["error"]])){
@@ -154,7 +154,7 @@ indentifyV8 <- function(){
   )
   ctx$assign("code", code)
   ctx$assign("parser", parser)
-  ctx$assign("tabSize", readRStudioPreference("num_spaces_for_tab", 2))
+  ctx$assign("tabSize", getTabSize())
   ctx$eval(indentify)
   result <- ctx$get("result")
   if(!is.null(err <- result[["error"]])){

@@ -8,7 +8,7 @@ codemirror <- getOption("prettify.codemirror")
 
 action <- getOption("prettify.action")
 
-tabSize <- readRStudioPreference("num_spaces_for_tab", 2)
+tabSize <- getOption("prettify.tabSize")
 
 if(action == "prettify"){
   parser <- switch(
