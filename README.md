@@ -1,6 +1,6 @@
 # **prettifyAddins**
 
-### RStudio addins to prettify JavaScript / JSX / HTML / CSS / SCSS / Markdown.
+### RStudio addins to prettify JavaScript / HTML / CSS / Markdown / C++ and more.
 
 **JavaScript example:**
 
@@ -9,6 +9,18 @@
 The **Markdown** prettifier also prettifies the code blocks:
 
 ![](https://raw.githubusercontent.com/stla/prettifyAddins/master/inst/screenshots/prettifyAddins_md.gif)
+
+
+## NEWS
+
+As of version 1.0.0, there are six addins:
+
+![](https://raw.githubusercontent.com/stla/prettifyAddins/master/inst/screenshots/addins_1-0-0.png)
+
+The 'shiny' addins are the ones you can see on the above GIFs. The other ones 
+are not interactive. The 'Prettify C/C++/Java' addin requires `clang-format` 
+(it is possible to indent C/C++/Java (and more) with the 'shiny' addin 
+'Indent').
 
 ___
 
