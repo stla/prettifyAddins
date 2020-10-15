@@ -4,7 +4,7 @@ Binding: prettify
 Interactive: true
 
 Name: Indent (shiny)
-Description: Indent JavaScript/JSX/HTML/CSS/SCSS and more.
+Description: Indent JavaScript/HTML/CSS/C++ and more.
 Binding: indentify
 Interactive: true
 
@@ -16,4 +16,14 @@ Interactive: false
 Name: Indent (V8)
 Description: Indent JavaScript/JSX/HTML/CSS/SCSS.
 Binding: indentifyV8
+Interactive: false
+
+Name: Prettify C/C++/Java
+Description: Prettify C/C++/Java.
+Binding: prettifyCLANG
+Interactive: false
+
+Name: Prettify XML/SVG
+Description: Prettify XML/SVG.
+Binding: prettifyXML
 Interactive: false
