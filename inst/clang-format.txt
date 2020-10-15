@@ -1,0 +1,15 @@
+---
+BasedOnStyle: Chromium
+ColumnLimit: '80'
+IndentWidth: '2'
+SpaceBeforeParens: Never
+SpaceInEmptyParentheses: 'false'
+SpacesInParentheses: 'false'
+UseTab: Never
+---
+Language: Cpp
+CompactNamespaces: 'false'
+NamespaceIndentation: All
+---
+Language: Java
+...
