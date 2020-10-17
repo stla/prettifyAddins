@@ -24,16 +24,37 @@ prettify_Shiny <- function(
     if(is.null(tabSize)){
       tabSize <- RStudioTabSize()
     }
-    code <- paste0(context[["contents"]], collapse = "\n")
+    contents <- context[["contents"]]
+  }else if(is.na(contents)){
+    message("You have to provide something for the `contents` argument.")
+    return(invisible())
   }else{
     if(!is.element(language, Languages()[["prettify"]])){
       message("Unrecognized or unsupported language.")
       return(invisible())
     }
-    code <- paste0(contents, collapse = "\n")
-    theme <- themeInfo[["editor"]]
-    dark <- themeInfo[["dark"]]
+    if(is.null(themeInfo)){
+      if(isAvailable()){
+        themeInfo <- RStudioThemeInfo()
+        theme <- gsub(" ", "_", tolower(themeInfo[["editor"]]))
+        dark <- themeInfo[["dark"]]
+      }else{
+        theme <- "cobalt"
+        dark <- "true"
+      }
+    }
+    if(is.null(tabSize)){
+      if(isAvailable()){
+        tabSize <- RStudioTabSize()
+      }else{
+        tabSize <- 2
+      }
+    }
+    if(file.exists(contents)){
+      contents <- suppressWarnings(readLines(contents))
+    }
   }
+  code <- paste0(contents, collapse = "\n")
   options(prettify.code = code)
   options(prettify.language = language)
   options(prettify.theme = theme)
@@ -76,16 +97,37 @@ indentify_Shiny <- function(
     if(is.null(tabSize)){
       tabSize <- RStudioTabSize()
     }
-    code <- paste0(context[["contents"]], collapse = "\n")
+    contents <- context[["contents"]]
+  }else if(is.na(contents)){
+    message("You have to provide something for the `contents` argument.")
+    return(invisible())
   }else{
     if(!is.element(language, Languages()[["indentify"]])){
       message("Unrecognized or unsupported language.")
       return(invisible())
     }
-    code <- paste0(contents, collapse = "\n")
-    theme <- themeInfo[["editor"]]
-    dark <- themeInfo[["dark"]]
+    if(is.null(themeInfo)){
+      if(isAvailable()){
+        themeInfo <- RStudioThemeInfo()
+        theme <- gsub(" ", "_", tolower(themeInfo[["editor"]]))
+        dark <- themeInfo[["dark"]]
+      }else{
+        theme <- "cobalt"
+        dark <- "true"
+      }
+    }
+    if(is.null(tabSize)){
+      if(isAvailable()){
+        tabSize <- RStudioTabSize()
+      }else{
+        tabSize <- 2
+      }
+    }
+    if(file.exists(contents)){
+      contents <- suppressWarnings(readLines(contents))
+    }
   }
+  code <- paste0(contents, collapse = "\n")
   options(prettify.code = code)
   options(prettify.language = language)
   options(prettify.theme = theme)

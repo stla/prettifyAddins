@@ -9,6 +9,7 @@ prettify <- function(){
   language <- switch(
     tolower(ext),
     css = "css",
+    htm = "html",
     html = "html",
     rhtml = "rhtml",
     js = "javascript",
@@ -48,6 +49,7 @@ indentify <- function(){
   language <- switch(
     tolower(ext),
     css = "css",
+    htm = "html",
     html = "html",
     rhtml = "rhtml",
     js = "javascript",
@@ -79,7 +81,7 @@ indentify <- function(){
   options(prettify.theme = theme)
   options(prettify.dark = dark)
   options(prettify.action = "indentify")
-  options(prettify.tabSize = getTabSize())
+  options(prettify.tabSize = RStudioTabSize())
   codemirror = !is.element(
     language, c("css", "html", "javascript", "jsx", "scss")
   )
