@@ -1,21 +1,20 @@
 #' @importFrom rstudioapi isAvailable
 #' @importFrom tools file_ext
 #' @importFrom xml2 read_xml
+#' @export
 prettifyXML <- function(contents = NA, tabSize = NULL){
   if(is.na(contents) && isAvailable()){
     context <- RStudioContext()
     ext <- tolower(file_ext(context[["path"]]))
     if(!is.element(ext, c("xml", "svg"))){
-      message("Looks like this file is not a XML file.")
-      return(invisible())
+      stop("Looks like this file is not a XML file.")
     }
     if(is.null(tabSize)){
       tabSize <- RStudioTabSize()
     }
     contents <- context[["contents"]]
   }else if(is.na(contents)){
-    message("You have to provide something for the `contents` argument.")
-    return(invisible())
+    stop("You have to provide something for the `contents` argument.")
   }else{
     if(is.null(tabSize)){
       if(isAvailable()){
@@ -25,6 +24,10 @@ prettifyXML <- function(contents = NA, tabSize = NULL){
       }
     }
     if(file.exists(contents)){
+      ext <- tolower(file_ext(contents))
+      if(!is.element(ext, c("xml", "svg"))){
+        stop("Looks like this file is not a XML file.")
+      }
       contents <- suppressWarnings(readLines(contents))
     }
   }
@@ -38,11 +41,10 @@ prettifyXML <- function(contents = NA, tabSize = NULL){
       NULL
     })
     if(is.null(prettyCode)){
-      message(
+      stop(
         "Something went wrong. ",
         "Probably the code is not valid."
       )
-      return(invisible())
     }
   }else{
     tmpFile <- tempfile(fileext = ".xml")
@@ -52,11 +54,10 @@ prettifyXML <- function(contents = NA, tabSize = NULL){
       "xmllint", paste0("--format ", tmpFile), stdout = TRUE, stderr = TRUE
     ))
     if(!is.null(attr(prettyCode, "status"))){
-      message(
+      stop(
         "Something went wrong. ",
         "Probably the code is not valid."
       )
-      return(invisible())
     }
   }
 
