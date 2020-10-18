@@ -11,3 +11,18 @@ menu within RStudio. The \code{Indent} addin only reindents the code, while
 the \code{Prettify} addin also modifies the code, e.g. it adds trailing
 semi-colons to JavaScript code when they are missing.
 }
+\examples{
+list(
+  Shiny = list(
+    Prettify = c("HTML", "CSS", "SCSS", "JavaScript", "JSX", "Markdown"),
+    Indent = c("HTML", "CSS", "SCSS", "JavaScript", "JSX", "C(++)", "Java",
+               "Python", "SAS", "Shell", "SQL")
+  ),
+  V8 = list(
+    Prettify = c("HTML", "CSS", "SCSS", "JavaScript", "JSX", "Markdown"),
+    Indent = c("HTML", "CSS", "SCSS", "JavaScript", "JSX")
+  ),
+  CLANG = c("C(++)", "Java"),
+  XML = c("XML", "SVG")
+)
+}

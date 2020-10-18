@@ -6,7 +6,7 @@ prettifyCLANG <- function(contents = NA, tabSize = NULL){
     stop(
       "This function requires `clang-format`. ",
       "Either it is not installed, or it is not found. ",
-      "To reindent C/C++/Java code, you can use the 'Indent' addin."
+      "To reindent C/C++/Java code, you can use the 'Shiny Indent' addin."
     )
   }
   if(is.na(contents) && isAvailable()){

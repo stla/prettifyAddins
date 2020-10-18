@@ -8,4 +8,19 @@
 #'
 #' @name prettifyAddins
 #' @docType package
+#'
+#' @examples
+#' list(
+#'   Shiny = list(
+#'     Prettify = c("HTML", "CSS", "SCSS", "JavaScript", "JSX", "Markdown"),
+#'     Indent = c("HTML", "CSS", "SCSS", "JavaScript", "JSX", "C(++)", "Java",
+#'                "Python", "SAS", "Shell", "SQL")
+#'   ),
+#'   V8 = list(
+#'     Prettify = c("HTML", "CSS", "SCSS", "JavaScript", "JSX", "Markdown"),
+#'     Indent = c("HTML", "CSS", "SCSS", "JavaScript", "JSX")
+#'   ),
+#'   CLANG = c("C(++)", "Java"),
+#'   XML = c("XML", "SVG")
+#' )
 NULL
