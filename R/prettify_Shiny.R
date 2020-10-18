@@ -12,13 +12,11 @@ prettify_Shiny <- function(
       if(ext %in% names(Languages()[["prettify"]])){
         language <- Languages()[["prettify"]][[ext]]
       }else{
-        message("Unrecognized or unsupported language.")
-        return(invisible())
+        stop("Unrecognized or unsupported language.")
       }
     }else{
       if(!is.element(language, Languages()[["prettify"]])){
-        message("Unrecognized or unsupported language.")
-        return(invisible())
+        stop("Unrecognized or unsupported language.")
       }
     }
     if(is.null(themeInfo)){
@@ -31,12 +29,30 @@ prettify_Shiny <- function(
     }
     contents <- context[["contents"]]
   }else if(is.na(contents)){
-    message("You have to provide something for the `contents` argument.")
-    return(invisible())
+    stop("You have to provide something for the `contents` argument.")
   }else{
-    if(!is.element(language, Languages()[["prettify"]])){
-      message("Unrecognized or unsupported language.")
-      return(invisible())
+    if(is.na(language)){
+      if(!isFile(contents)){
+        stop("You have to set a language.")
+      }
+      ext <- tolower(file_ext(contents))
+      if(ext %in% names(Languages()[["prettify"]])){
+        language <- Languages()[["prettify"]][[ext]]
+      }else{
+        stop("Unrecognized or unsupported language.")
+      }
+    }else if(!is.element(language, Languages()[["prettify"]])){
+      stop("Unrecognized or unsupported language.")
+    }
+    if(isFile(contents)){
+      contents <- suppressWarnings(readLines(contents))
+    }
+    if(is.null(tabSize)){
+      if(isAvailable()){
+        tabSize <- RStudioTabSize()
+      }else{
+        tabSize <- 2
+      }
     }
     if(is.null(themeInfo)){
       if(isAvailable()){
@@ -47,16 +63,6 @@ prettify_Shiny <- function(
         theme <- "cobalt"
         dark <- "true"
       }
-    }
-    if(is.null(tabSize)){
-      if(isAvailable()){
-        tabSize <- RStudioTabSize()
-      }else{
-        tabSize <- 2
-      }
-    }
-    if(file.exists(contents)){
-      contents <- suppressWarnings(readLines(contents))
     }
   }
   code <- paste0(contents, collapse = "\n")
@@ -76,6 +82,7 @@ prettify_Shiny <- function(
 }
 
 
+
 #' @importFrom shiny shinyAppDir runGadget
 #' @importFrom rstudioapi isAvailable
 #' @importFrom tools file_ext
@@ -83,20 +90,19 @@ prettify_Shiny <- function(
 indentify_Shiny <- function(
   contents = NA, language = NA, tabSize = NULL, themeInfo = NULL
 ){
+  languages <- c(Languages()[["indentify"]], Languages()[["codemirror"]])
   if(is.na(contents) && isAvailable()){
     context <- RStudioContext()
     if(is.na(language)){
       ext <- file_ext(context[["path"]])
-      if(ext %in% names(Languages()[["indentify"]])){
-        language <- Languages()[["indentify"]][[ext]]
+      if(ext %in% names(languages)){
+        language <- languages[[ext]]
       }else{
-        message("Unrecognized or unsupported language.")
-        return(invisible())
+        stop("Unrecognized or unsupported language.")
       }
     }else{
-      if(!is.element(language, Languages()[["prettify"]])){
-        message("Unrecognized or unsupported language.")
-        return(invisible())
+      if(!is.element(language, languages)){
+        stop("Unrecognized or unsupported language.")
       }
     }
     if(is.null(themeInfo)){
@@ -109,12 +115,30 @@ indentify_Shiny <- function(
     }
     contents <- context[["contents"]]
   }else if(is.na(contents)){
-    message("You have to provide something for the `contents` argument.")
-    return(invisible())
+    stop("You have to provide something for the `contents` argument.")
   }else{
-    if(!is.element(language, Languages()[["indentify"]])){
-      message("Unrecognized or unsupported language.")
-      return(invisible())
+    if(is.na(language)){
+      if(!isFile(contents)){
+        stop("You have to set a language.")
+      }
+      ext <- tolower(file_ext(contents))
+      if(ext %in% names(languages)){
+        language <- languages[[ext]]
+      }else{
+        stop("Unrecognized or unsupported language.")
+      }
+    }else if(!is.element(language, languages)){
+      stop("Unrecognized or unsupported language.")
+    }
+    if(isFile(contents)){
+      contents <- suppressWarnings(readLines(contents))
+    }
+    if(is.null(tabSize)){
+      if(isAvailable()){
+        tabSize <- RStudioTabSize()
+      }else{
+        tabSize <- 2
+      }
     }
     if(is.null(themeInfo)){
       if(isAvailable()){
@@ -125,16 +149,6 @@ indentify_Shiny <- function(
         theme <- "cobalt"
         dark <- "true"
       }
-    }
-    if(is.null(tabSize)){
-      if(isAvailable()){
-        tabSize <- RStudioTabSize()
-      }else{
-        tabSize <- 2
-      }
-    }
-    if(file.exists(contents)){
-      contents <- suppressWarnings(readLines(contents))
     }
   }
   code <- paste0(contents, collapse = "\n")
