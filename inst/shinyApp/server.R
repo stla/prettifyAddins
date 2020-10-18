@@ -1,13 +1,7 @@
-library(rstudioapi)
-
-context <- getOption("prettify.context")
 language <- getOption("prettify.language")
 code <- getOption("prettify.code")
-id <- context[["id"]]
 codemirror <- getOption("prettify.codemirror")
-
 action <- getOption("prettify.action")
-
 tabSize <- getOption("prettify.tabSize")
 
 if(action == "prettify"){
@@ -45,8 +39,7 @@ shinyServer(function(input, output, session){
   })
 
   observeEvent(input[["done"]], {
-    setDocumentContents(text = input[["prettyCode"]], id = id)
-    stopApp()
+    stopApp(input[["prettyCode"]])
   })
 
   session$sendCustomMessage(
