@@ -15,6 +15,11 @@ prettify_Shiny <- function(
         message("Unrecognized or unsupported language.")
         return(invisible())
       }
+    }else{
+      if(!is.element(language, Languages()[["prettify"]])){
+        message("Unrecognized or unsupported language.")
+        return(invisible())
+      }
     }
     if(is.null(themeInfo)){
       themeInfo <- RStudioThemeInfo()
@@ -85,6 +90,11 @@ indentify_Shiny <- function(
       if(ext %in% names(Languages()[["indentify"]])){
         language <- Languages()[["indentify"]][[ext]]
       }else{
+        message("Unrecognized or unsupported language.")
+        return(invisible())
+      }
+    }else{
+      if(!is.element(language, Languages()[["prettify"]])){
         message("Unrecognized or unsupported language.")
         return(invisible())
       }
