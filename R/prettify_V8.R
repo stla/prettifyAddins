@@ -4,8 +4,7 @@
 prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
 
   if(!requireNamespace("V8")){
-    message("This function requires the 'V8' package.")
-    return(invisible())
+    stop("This function requires the 'V8' package.")
   }
 
   if(is.na(contents) && isAvailable()){
@@ -15,13 +14,11 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
       if(ext %in% names(Languages()[["prettify"]])){
         language <- Languages()[["prettify"]][[ext]]
       }else{
-        message("Unrecognized or unsupported language.")
-        return(invisible())
+        stop("Unrecognized or unsupported language.")
       }
     }else{
       if(!is.element(language, Languages()[["prettify"]])){
-        message("Unrecognized or unsupported language.")
-        return(invisible())
+        stop("Unrecognized or unsupported language.")
       }
     }
     if(is.null(tabSize)){
@@ -29,12 +26,10 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
     }
     contents <- context[["contents"]]
   }else if(is.na(contents)){
-    message("You have to provide something for the `contents` argument.")
-    return(invisible())
+    stop("You have to provide something for the `contents` argument.")
   }else{
     if(!is.element(language, Languages()[["prettify"]])){
-      message("Unrecognized or unsupported language.")
-      return(invisible())
+      stop("Unrecognized or unsupported language.")
     }
     if(is.null(tabSize)){
       if(isAvailable()){
@@ -44,6 +39,12 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
       }
     }
     if(file.exists(contents)){
+      ext <- tolower(file_ext(contents))
+      if(ext %in% names(Languages()[["prettify"]])){
+        language <- Languages()[["prettify"]][[ext]]
+      }else{
+        stop("Unrecognized or unsupported language.")
+      }
       contents <- suppressWarnings(readLines(contents))
     }
   }
@@ -122,8 +123,7 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
   ctx$eval(prettify)
   result <- ctx$get("result")
   if(!is.null(err <- result[["error"]])){
-    message(err)
-    return(invisible())
+    stop(err)
   }
   result[["prettyCode"]]
 }
@@ -135,8 +135,7 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
 indentify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
 
   if(!requireNamespace("V8")){
-    message("This function requires the 'V8' package.")
-    return(invisible())
+    stop("This function requires the 'V8' package.")
   }
 
   if(is.na(contents) && isAvailable()){
@@ -146,13 +145,11 @@ indentify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
       if(ext %in% names(Languages()[["prettify"]])){
         language <- Languages()[["prettify"]][[ext]]
       }else{
-        message("Unrecognized or unsupported language.")
-        return(invisible())
+        stop("Unrecognized or unsupported language.")
       }
     }else{
       if(!is.element(language, Languages()[["prettify"]])){
-        message("Unrecognized or unsupported language.")
-        return(invisible())
+        stop("Unrecognized or unsupported language.")
       }
     }
     if(is.null(tabSize)){
@@ -160,12 +157,10 @@ indentify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
     }
     contents <- context[["contents"]]
   }else if(is.na(contents)){
-    message("You have to provide something for the `contents` argument.")
-    return(invisible())
+    stop("You have to provide something for the `contents` argument.")
   }else{
     if(!is.element(language, Languages()[["prettify"]])){
-      message("Unrecognized or unsupported language.")
-      return(invisible())
+      stop("Unrecognized or unsupported language.")
     }
     if(is.null(tabSize)){
       if(isAvailable()){
@@ -175,6 +170,11 @@ indentify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
       }
     }
     if(file.exists(contents)){
+      if(ext %in% names(Languages()[["prettify"]])){
+        language <- Languages()[["prettify"]][[ext]]
+      }else{
+        stop("Unrecognized or unsupported language.")
+      }
       contents <- suppressWarnings(readLines(contents))
     }
   }
@@ -237,8 +237,7 @@ indentify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
   ctx$eval(indentify)
   result <- ctx$get("result")
   if(!is.null(err <- result[["error"]])){
-    message(err)
-    return(invisible())
+    stop(err)
   }
   result[["prettyCode"]]
 }
