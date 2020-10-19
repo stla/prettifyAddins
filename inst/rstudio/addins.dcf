@@ -27,3 +27,8 @@ Name: Prettify XML/SVG
 Description: Prettify XML/SVG.
 Binding: PrettifyXML
 Interactive: false
+
+Name: Indent (PhantomJS)
+Description: Indent C/C++/Python/SQL and more.
+Binding: IndentPhantomJS
+Interactive: false

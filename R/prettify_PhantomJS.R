@@ -1,5 +1,5 @@
 #' Reindent code using PhantomJS
-#' @description Reindent some code using the V8 package.
+#' @description Reindent some code using PhantomJS.
 #'
 #' @param contents the code to be reindented; there are three possibilities for
 #'   this argument:
@@ -7,7 +7,7 @@
 #'   the path to a file;
 #'   or the code given as a character vector
 #' @param language the language of the code in lower case, such as
-#'   \code{"javascript"};
+#'   \code{"python"};
 #'   see \code{\link{getPrettifiableLanguages}};
 #'   if the contents are read from a file and \code{language=NA}, then the
 #'   language is guessed from the file extension
@@ -20,6 +20,8 @@
 #'
 #' @return The reindented code in a character string.
 #'
+#' @note This function requires the 'phantomjs' command-line utility.
+#'
 #' @importFrom rstudioapi isAvailable
 #' @importFrom tools file_ext
 #' @export
@@ -27,15 +29,23 @@
 #' @examples library(prettifyAddins)
 #'
 #' code <- c(
-#'   "function f(x){",
-#'   "return x+1",
-#'   "}"
+#'   'if test == 1:',
+#'   'print "it is one"',
+#'   'else:',
+#'   'print "it is not one"'
 #' )
-#' cat(reindent_V8(code, "javascript"))
+#' cat(reindent_PhantomJS(code, "python"))
 reindent_PhantomJS <- function(contents = NA, language = NA, tabSize = NULL){
-  if(!requireNamespace("V8")){
-    stop("This function requires the 'V8' package.")
-  }
+  if(Sys.which("phantomjs") == ""){
+    stop("This function requires the command line utility 'phantomjs'.")
+  } # copier installPhantomJS from shinytest?
+
+  language <- tolower(language)
+
+  languages <- Languages()[["codemirror"]]
+  languages <- c(
+    "c", "cpp", "c++", "java", languages[!grepl("/", languages)]
+  )
 
   if(isNA(contents) && isAvailable()){
     context <- RStudioContext()
@@ -47,7 +57,7 @@ reindent_PhantomJS <- function(contents = NA, language = NA, tabSize = NULL){
         stop("Unrecognized or unsupported language.")
       }
     }else{
-      if(!is.element(language, Languages()[["codemirror"]])){
+      if(!is.element(language, languages)){
         stop("Unrecognized or unsupported language.")
       }
     }
@@ -68,20 +78,26 @@ reindent_PhantomJS <- function(contents = NA, language = NA, tabSize = NULL){
       }else{
         stop("Unrecognized or unsupported language.")
       }
-    }else if(!is.element(language, Languages()[["codemirror"]])){
-      stop("Unrecognized or unsupported language.")
-    }
-    if(isFile(contents)){
-      contents <- suppressWarnings(readLines(contents))
-    }
-    if(is.null(tabSize)){
-      if(isAvailable()){
-        tabSize <- RStudioTabSize()
-      }else{
-        tabSize <- 2
+    }else if(!isFile(contents) &&
+             !is.element(language, Languages()[["codemirror"]])){
+      language <- as.list(Languages()[["codemirror"]])[[language]]
+      # works before ext=language !
+      if(is.null(language)){
+        stop("Unrecognized or unsupported language.")
       }
     }
   }
+  if(isFile(contents)){
+    contents <- suppressWarnings(readLines(contents))
+  }
+  if(is.null(tabSize)){
+    if(isAvailable()){
+      tabSize <- RStudioTabSize()
+    }else{
+      tabSize <- 2
+    }
+  }
+
   code <- paste0(contents, collapse = "\n")
 
   folder <-
@@ -89,15 +105,25 @@ reindent_PhantomJS <- function(contents = NA, language = NA, tabSize = NULL){
   codemirror <- file.path(folder, "lib", "codemirror.js")
   formatting <- file.path(folder, "formatting.js")
   meta <- file.path(folder, "mode", "meta.js")
-  mode <- file.path(folder, "mode", "python", "python.js")
+  if(grepl("/", language)){
+    mode <- ifelse(language == "text/x-java", "java", "clike")
+  }else{
+    mode <- language
+  }
+  mode <- file.path(folder, "mode", mode, paste0(mode, ".js"))
 
   script <- system.file("PhantomJS", "script.js", package = "prettifyAddins")
 
-  prettyCode <- system2(
+  prettyCode <- suppressWarnings(system2(
     "phantomjs",
-    c(script, codemirror, formatting, meta, mode, shQuote(code), "python")
-  )
+    c(script, codemirror, formatting, meta, mode, shQuote(code), language),
+    stdout = TRUE, stderr = TRUE
+  ))
 
-  prettyCode
+  if(!is.null(attr(prettyCode, "status"))){
+    stop("PhantomJS failed.")
+  }
+
+  paste0(prettyCode, collapse = "\n")
 
 }

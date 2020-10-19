@@ -8,7 +8,8 @@ addins <- list(
     indent = function() reindent_V8()
   ),
   xml = function() prettifyXML(),
-  clang = function() prettifyCLANG()
+  clang = function() prettifyCLANG(),
+  phantomjs = function() reindent_PhantomJS()
 )
 
 #' @importFrom rstudioapi setDocumentContents
@@ -33,3 +34,4 @@ PrettifyV8 <- function() Addin(addins$v8$prettify)
 IndentV8 <- function() Addin(addins$v8$indent)
 PrettifyXML <- function() Addin(addins$xml)
 PrettifyCLANG <- function() Addin(addins$clang)
+IndentPhantomJS <- function() Addin(addins$phantomjs)
