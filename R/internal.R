@@ -66,6 +66,16 @@ Languages <- function(){
   )
 }
 
+#' @importFrom tools file_ext
+#' @noRd
+fileExt <- function(x){
+  if(grepl("\\.c\\+\\+$", tolower(x))){
+    "c++"
+  }else{
+    file_ext(x)
+  }
+}
+
 isFile <- function(x){
   length(x) == 1L && !is.na(x) && file.exists(x)
 }

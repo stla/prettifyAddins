@@ -53,7 +53,7 @@ reindent_PhantomJS <- function(contents = NA, language = NA, tabSize = NULL){
   if(isNA(contents) && isAvailable()){
     context <- RStudioContext()
     if(is.na(language)){
-      ext <- file_ext(context[["path"]])
+      ext <- fileExt(context[["path"]])
       if(ext %in% names(Languages()[["codemirror"]])){
         language <- Languages()[["codemirror"]][[ext]]
       }else{
@@ -75,7 +75,7 @@ reindent_PhantomJS <- function(contents = NA, language = NA, tabSize = NULL){
       if(!isFile(contents)){
         stop("You have to set a language.")
       }
-      ext <- tolower(file_ext(contents))
+      ext <- tolower(fileExt(contents))
       if(ext %in% names(Languages()[["codemirror"]])){
         language <- Languages()[["codemirror"]][[ext]]
       }else{

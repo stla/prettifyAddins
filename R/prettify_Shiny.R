@@ -172,7 +172,7 @@ reindent_Shiny <- function(
   if(isNA(contents) && isAvailable()){
     context <- RStudioContext()
     if(is.na(language)){
-      ext <- file_ext(context[["path"]])
+      ext <- fileExt(context[["path"]])
       if(ext %in% names(languages)){
         language <- languages[[ext]]
       }else{
@@ -199,7 +199,7 @@ reindent_Shiny <- function(
       if(!isFile(contents)){
         stop("You have to set a language.")
       }
-      ext <- tolower(file_ext(contents))
+      ext <- tolower(fileExt(contents))
       if(ext %in% names(languages)){
         language <- languages[[ext]]
       }else{
