@@ -15,7 +15,15 @@ addins <- list(
 #' @keywords internal
 Addin <- function(f){
   context <- RStudioContext()
-  contents <- f()
+  contents <- tryCatch({
+    f()
+  }, error = function(e){
+    e
+  })
+  if(inherits(contents, "error")){
+    message("Something went wrong. ", contents$message)
+    return(invisible())
+  }
   setDocumentContents(contents, context[["id"]])
 }
 
