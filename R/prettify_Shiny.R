@@ -154,7 +154,21 @@ prettify_Shiny <- function(
 reindent_Shiny <- function(
   contents = NA, language = NA, tabSize = NULL, themeInfo = NULL
 ){
+
+  language <- tolower(language)
+
+  if(!is.na(language) && language %in% c("c","cpp","c++","java")){
+    language <- switch(
+      language,
+      c = "text/x-csrc",
+      cpp = "text/x-c++src",
+      "c++" = "text/x-c++src",
+      java = "text/x-java"
+    )
+  }
+
   languages <- c(Languages()[["indentify"]], Languages()[["codemirror"]])
+
   if(isNA(contents) && isAvailable()){
     context <- RStudioContext()
     if(is.na(language)){
