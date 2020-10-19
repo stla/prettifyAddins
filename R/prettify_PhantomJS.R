@@ -37,8 +37,11 @@
 #' cat(reindent_PhantomJS(code, "python"))
 reindent_PhantomJS <- function(contents = NA, language = NA, tabSize = NULL){
   if(Sys.which("phantomjs") == ""){
-    stop("This function requires the command line utility 'phantomjs'.")
-  } # copier installPhantomJS from shinytest?
+    stop(
+      "This function requires the command line utility 'phantomjs'. ",
+      "See `?install_phantomjs` to install it."
+    )
+  }
 
   language <- tolower(language)
 
