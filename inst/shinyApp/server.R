@@ -13,7 +13,8 @@ if(action == "prettify"){
     javascript = "babel",
     jsx = "babel",
     markdown = "markdown",
-    scss = "css"
+    scss = "css",
+    yaml = "yaml"
   )
 }else{
   if(codemirror){

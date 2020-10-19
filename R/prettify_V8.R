@@ -96,7 +96,8 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
     md = "markdown",
     markdown = "markdown",
     rmd = "markdown",
-    scss = "css"
+    scss = "css",
+    yaml = "yaml"
   )
 
 
@@ -121,7 +122,8 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
     babel = "parser-babel.js",
     html = "parser-html.js",
     markdown = "parser-markdown.js",
-    css = "parser-postcss.js"
+    css = "parser-postcss.js",
+    yaml = "parser-yaml.js"
   )
   ctx$source(jsfile(js))
   if(parser %in% c("html","markdown")){
