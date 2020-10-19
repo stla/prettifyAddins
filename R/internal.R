@@ -1,3 +1,24 @@
+#' Prettifiable languages
+#' @description Returns the list of languages that are supported by this
+#'   package.
+#'
+#' @export
+getPrettifiableLanguages <- function(){
+  list(
+    Shiny = list(
+      Prettify = c("HTML", "CSS", "SCSS", "JavaScript", "JSX", "Markdown"),
+      Indent = c("HTML", "CSS", "SCSS", "JavaScript", "JSX", "C(++)", "Java",
+                 "Python", "SAS", "Shell", "SQL")
+    ),
+    V8 = list(
+      Prettify = c("HTML", "CSS", "SCSS", "JavaScript", "JSX", "Markdown"),
+      Indent = c("HTML", "CSS", "SCSS", "JavaScript", "JSX")
+    ),
+    CLANG = c("C(++)", "Java"),
+    XML = c("XML", "SVG")
+  )
+}
+
 Languages <- function(){
   list(
     prettify = c(
