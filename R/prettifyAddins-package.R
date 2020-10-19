@@ -9,18 +9,6 @@
 #' @name prettifyAddins
 #' @docType package
 #'
-#' @examples # Here is the list of supported languages:
-#' list(
-#'   Shiny = list(
-#'     Prettify = c("HTML", "CSS", "SCSS", "JavaScript", "JSX", "Markdown"),
-#'     Indent = c("HTML", "CSS", "SCSS", "JavaScript", "JSX", "C(++)", "Java",
-#'                "Python", "SAS", "Shell", "SQL")
-#'   ),
-#'   V8 = list(
-#'     Prettify = c("HTML", "CSS", "SCSS", "JavaScript", "JSX", "Markdown"),
-#'     Indent = c("HTML", "CSS", "SCSS", "JavaScript", "JSX")
-#'   ),
-#'   CLANG = c("C(++)", "Java"),
-#'   XML = c("XML", "SVG")
-#' )
+#' @examples # get the list of supported languages:
+#' getPrettifiableLanguages()
 NULL

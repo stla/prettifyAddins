@@ -7,15 +7,17 @@ getPrettifiableLanguages <- function(){
   list(
     Shiny = list(
       Prettify = c("HTML", "CSS", "SCSS", "JavaScript", "JSX", "Markdown"),
-      Indent = c("HTML", "CSS", "SCSS", "JavaScript", "JSX", "C(++)", "Java",
-                 "Python", "SAS", "Shell", "SQL")
+      Indent = c("HTML", "CSS", "SCSS", "JavaScript", "JSX", "C(++)", "Fortran",
+                 "Java", "Julia", "Python", "SAS", "Shell", "SQL")
     ),
     V8 = list(
       Prettify = c("HTML", "CSS", "SCSS", "JavaScript", "JSX", "Markdown"),
       Indent = c("HTML", "CSS", "SCSS", "JavaScript", "JSX")
     ),
     CLANG = c("C(++)", "Java"),
-    XML = c("XML", "SVG")
+    XML = c("XML", "SVG"),
+    PhantomJS = c("C(++)", "Fortran", "Java", "Julia", "Python", "SAS",
+                  "Shell", "SQL")
   )
 }
 
@@ -46,6 +48,8 @@ Languages <- function(){
       c = "text/x-csrc",
       cpp = "text/x-c++src",
       "c++" = "text/x-c++src",
+      f = "fortran",
+      f90 = "fortran",
       h = "text/x-csrc",
       hpp = "text/x-c++src",
       java = "text/x-java",
