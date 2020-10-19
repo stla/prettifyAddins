@@ -7,7 +7,7 @@ RStudio.
 * Among these functions, there is `reindent_PhantomJS`. It allows to reindent 
 code for some languages which were supported by a Shiny addin only, whereas 
 this function does not run a Shiny app. These languages are C, C++, Java, 
-Fortran, Julia, Python, SAS, Shell, and SQL.
+Fortran, Julia, Python, SAS, Scala, Shell, and SQL.
 
 
 

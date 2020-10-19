@@ -13,14 +13,39 @@ The **Markdown** prettifier also prettifies the code blocks:
 
 ## NEWS
 
-As of version 1.0.0, there are six addins:
+- As of **version 1.0.0**, there are six addins:
 
 ![](https://raw.githubusercontent.com/stla/prettifyAddins/master/inst/screenshots/addins_1-0-0.png)
 
 The 'shiny' addins are the ones you can see on the above GIFs. The other ones 
-are not interactive. The 'Prettify C/C++/Java' addin requires `clang-format` 
-(it is possible to indent C/C++/Java (and more) with the 'shiny' addin 
-'Indent').
+are not interactive. The *'Prettify C/C++/Java'* addin requires `clang-format` 
+(it is possible to reindent C/C++/Java (and more) with the *'Indent (shiny)'* 
+addin).
+
+- As of **version 2.0.0**, there is a new addin: *'Indent (PhantomJS)'*. It 
+allows to reindent code for some languages which were supported by the 
+*'Indent (shiny)'* addin only, whereas this addin does not run a Shiny app. 
+These languages are C, C++, Java, Fortran, Julia, Python, SAS, Scala, Shell, 
+and SQL. This addin requires `phantomjs` (the package provides a function to 
+install this software).
+
+Moreover, this version exports the functions used to prettify/reindent. 
+For example:
+
+```r
+code <- c(
+  "function f(x){",
+  "return x+1",
+  "}"
+)
+cat(prettify_V8(code, "javascript"))
+```
+gives
+```js
+function f(x) {
+  return x + 1;
+}
+```
 
 ___
 
