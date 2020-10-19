@@ -1,3 +1,23 @@
+#' Prettify XML
+#' @description Prettify some XML or SVG code.
+#'
+#' @param contents the code to be prettified; there are three possibilities for
+#'   this argument:
+#'   \code{NA} (default), to use the file currently opened in RStudio;
+#'   the path to a file;
+#'   or the code given as a character vector
+#' @param tabSize number of spaces of the indentation (usually \code{2} or
+#'   \code{4});
+#'   if \code{NULL} (the default), there are two possibilities:
+#'   if the contents are read from the current file in RStudio, then the
+#'   number of spaces will be the one you use in RStudio;
+#'   otherwise it is set to \code{2}
+#'
+#' @return The pretty code in a character string.
+#'
+#' @details The code is prettified with the help of the command line utility
+#'   \code{xmllint} if it is available, otherwise the \code{xml2} is used.
+#'
 #' @importFrom rstudioapi isAvailable
 #' @importFrom tools file_ext
 #' @importFrom xml2 read_xml

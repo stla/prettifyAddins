@@ -14,7 +14,7 @@
 #' @param tabSize number of spaces of the indentation (usually \code{2} or
 #'   \code{4});
 #'   if \code{NULL} (the default), there are two possibilities:
-#'   if the contents are read from the currrent file in RStudio, then the
+#'   if the contents are read from the current file in RStudio, then the
 #'   number of spaces will be the one you use in RStudio;
 #'   otherwise it is set to \code{2}
 #' @param themeInfo this argument is not important, it controls the theme of
@@ -125,7 +125,7 @@ prettify_Shiny <- function(
 #' @param tabSize number of spaces of the indentation (usually \code{2} or
 #'   \code{4});
 #'   if \code{NULL} (the default), there are two possibilities:
-#'   if the contents are read from the currrent file in RStudio, then the
+#'   if the contents are read from the current file in RStudio, then the
 #'   number of spaces will be the one you use in RStudio;
 #'   otherwise it is set to \code{2}
 #' @param themeInfo this argument is not important, it controls the theme of
