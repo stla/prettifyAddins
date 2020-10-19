@@ -62,6 +62,10 @@ isFile <- function(x){
   length(x) == 1L && file.exists(x)
 }
 
+isNA <- function(x){
+  length(x) == 1L && is.na(x)
+}
+
 .clangFormat <- function(tabSize) {
   c(
     "---",

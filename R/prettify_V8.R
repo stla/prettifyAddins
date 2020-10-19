@@ -29,7 +29,7 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
     stop("This function requires the 'V8' package.")
   }
 
-  if(is.na(contents) && isAvailable()){
+  if(isNA(contents) && isAvailable()){
     context <- RStudioContext()
     if(is.na(language)){
       ext <- file_ext(context[["path"]])
@@ -47,7 +47,7 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
       tabSize <- RStudioTabSize()
     }
     contents <- context[["contents"]]
-  }else if(is.na(contents)){
+  }else if(isNA(contents)){
     stop("You have to provide something for the `contents` argument.")
   }else{
     if(is.na(language)){
@@ -186,7 +186,7 @@ reindent_V8 <- function(contents = NA, language = NA, tabSize = NULL){
     stop("This function requires the 'V8' package.")
   }
 
-  if(is.na(contents) && isAvailable()){
+  if(isNA(contents) && isAvailable()){
     context <- RStudioContext()
     if(is.na(language)){
       ext <- file_ext(context[["path"]])
@@ -204,7 +204,7 @@ reindent_V8 <- function(contents = NA, language = NA, tabSize = NULL){
       tabSize <- RStudioTabSize()
     }
     contents <- context[["contents"]]
-  }else if(is.na(contents)){
+  }else if(isNA(contents)){
     stop("You have to provide something for the `contents` argument.")
   }else{
     if(is.na(language)){

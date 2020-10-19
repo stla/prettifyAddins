@@ -23,7 +23,7 @@
 #' @importFrom xml2 read_xml
 #' @export
 prettifyXML <- function(contents = NA, tabSize = NULL){
-  if(is.na(contents) && isAvailable()){
+  if(isNA(contents) && isAvailable()){
     context <- RStudioContext()
     ext <- tolower(file_ext(context[["path"]]))
     if(!is.element(ext, c("xml", "svg"))){
@@ -33,7 +33,7 @@ prettifyXML <- function(contents = NA, tabSize = NULL){
       tabSize <- RStudioTabSize()
     }
     contents <- context[["contents"]]
-  }else if(is.na(contents)){
+  }else if(isNA(contents)){
     stop("You have to provide something for the `contents` argument.")
   }else{
     if(is.null(tabSize)){
@@ -43,7 +43,7 @@ prettifyXML <- function(contents = NA, tabSize = NULL){
         tabSize <- 2
       }
     }
-    if(file.exists(contents)){
+    if(isFile(contents)){
       ext <- tolower(file_ext(contents))
       if(!is.element(ext, c("xml", "svg"))){
         stop("Looks like this file is not a XML file.")

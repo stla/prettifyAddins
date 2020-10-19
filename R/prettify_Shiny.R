@@ -32,7 +32,7 @@
 prettify_Shiny <- function(
   contents = NA, language = NA, tabSize = NULL, themeInfo = NULL
 ){
-  if(is.na(contents) && isAvailable()){
+  if(isNA(contents) && isAvailable()){
     context <- RStudioContext()
     if(is.na(language)){
       ext <- file_ext(context[["path"]])
@@ -55,7 +55,7 @@ prettify_Shiny <- function(
       tabSize <- RStudioTabSize()
     }
     contents <- context[["contents"]]
-  }else if(is.na(contents)){
+  }else if(isNA(contents)){
     stop("You have to provide something for the `contents` argument.")
   }else{
     if(is.na(language)){
@@ -144,7 +144,7 @@ reindent_Shiny <- function(
   contents = NA, language = NA, tabSize = NULL, themeInfo = NULL
 ){
   languages <- c(Languages()[["indentify"]], Languages()[["codemirror"]])
-  if(is.na(contents) && isAvailable()){
+  if(isNA(contents) && isAvailable()){
     context <- RStudioContext()
     if(is.na(language)){
       ext <- file_ext(context[["path"]])
@@ -167,7 +167,7 @@ reindent_Shiny <- function(
       tabSize <- RStudioTabSize()
     }
     contents <- context[["contents"]]
-  }else if(is.na(contents)){
+  }else if(isNA(contents)){
     stop("You have to provide something for the `contents` argument.")
   }else{
     if(is.na(language)){
