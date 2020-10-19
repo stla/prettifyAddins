@@ -47,13 +47,13 @@ reindent_PhantomJS <- function(contents = NA, language = NA, tabSize = NULL){
 
   languages <- Languages()[["codemirror"]]
   languages <- c(
-    "c", "cpp", "c++", "java", languages[!grepl("/", languages)]
+    names(languages[grepl("/", languages)]), languages[!grepl("/", languages)]
   )
 
   if(isNA(contents) && isAvailable()){
     context <- RStudioContext()
     if(is.na(language)){
-      ext <- fileExt(context[["path"]])
+      ext <- tolower(fileExt(context[["path"]]))
       if(ext %in% names(Languages()[["codemirror"]])){
         language <- Languages()[["codemirror"]][[ext]]
       }else{
@@ -108,7 +108,7 @@ reindent_PhantomJS <- function(contents = NA, language = NA, tabSize = NULL){
   formatting <- file.path(folder, "formatting.js")
   meta <- file.path(folder, "mode", "meta.js")
   if(grepl("/", language)){
-    mode <- ifelse(language == "text/x-java", "java", "clike")
+    mode <- "clike"
   }else{
     mode <- language
   }

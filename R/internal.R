@@ -60,6 +60,7 @@ Languages <- function(){
       jl = "julia",
       py = "python",
       sas = "sas",
+      scala = "text/x-scala",
       sh = "shell",
       sql = "sql"
     )

@@ -157,13 +157,14 @@ reindent_Shiny <- function(
 
   language <- tolower(language)
 
-  if(!is.na(language) && language %in% c("c","cpp","c++","java")){
+  if(!is.na(language) && language %in% c("c","cpp","c++","java","scala")){
     language <- switch(
       language,
       c = "text/x-csrc",
       cpp = "text/x-c++src",
       "c++" = "text/x-c++src",
-      java = "text/x-java"
+      java = "text/x-java",
+      scala = "text/x-scala"
     )
   }
 
