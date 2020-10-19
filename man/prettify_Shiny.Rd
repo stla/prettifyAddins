@@ -38,3 +38,15 @@ The pretty code in a character string.
 \description{
 Prettify some code using a Shiny app.
 }
+\examples{
+library(prettifyAddins)
+
+code <- c(
+  "function f(x){",
+  "return x+1",
+  "}"
+)
+if(interactive()){
+  cat(prettify_Shiny(code, "javascript"))
+}
+}

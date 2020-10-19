@@ -32,3 +32,13 @@ The pretty code in a character string.
 \description{
 Prettify some code using the V8 package.
 }
+\examples{
+library(prettifyAddins)
+
+code <- c(
+  "function f(x){",
+  "return x+1",
+  "}"
+)
+cat(prettify_V8(code, "javascript"))
+}

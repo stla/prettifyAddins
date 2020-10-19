@@ -32,3 +32,13 @@ The reindented code in a character string.
 \description{
 Reindent some code using the V8 package.
 }
+\examples{
+library(prettifyAddins)
+
+code <- c(
+  "function f(x){",
+  "return x+1",
+  "}"
+)
+cat(reindent_V8(code, "javascript"))
+}

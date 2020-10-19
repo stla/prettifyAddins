@@ -23,6 +23,15 @@
 #' @importFrom rstudioapi isAvailable
 #' @importFrom tools file_ext
 #' @export
+#'
+#' @examples library(prettifyAddins)
+#'
+#' code <- c(
+#'   "function f(x){",
+#'   "return x+1",
+#'   "}"
+#' )
+#' cat(prettify_V8(code, "javascript"))
 prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
 
   if(!requireNamespace("V8")){
@@ -180,6 +189,15 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
 #' @importFrom rstudioapi isAvailable
 #' @importFrom tools file_ext
 #' @export
+#'
+#' @examples library(prettifyAddins)
+#'
+#' code <- c(
+#'   "function f(x){",
+#'   "return x+1",
+#'   "}"
+#' )
+#' cat(reindent_V8(code, "javascript"))
 reindent_V8 <- function(contents = NA, language = NA, tabSize = NULL){
 
   if(!requireNamespace("V8")){

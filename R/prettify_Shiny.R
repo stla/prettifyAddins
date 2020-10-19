@@ -29,6 +29,17 @@
 #' @importFrom rstudioapi isAvailable
 #' @importFrom tools file_ext
 #' @export
+#'
+#' @examples library(prettifyAddins)
+#'
+#' code <- c(
+#'   "function f(x){",
+#'   "return x+1",
+#'   "}"
+#' )
+#' if(interactive()){
+#'   cat(prettify_Shiny(code, "javascript"))
+#' }
 prettify_Shiny <- function(
   contents = NA, language = NA, tabSize = NULL, themeInfo = NULL
 ){
