@@ -6,8 +6,7 @@
 #'   \code{NA} (default), to use the file currently opened in RStudio;
 #'   the path to a file;
 #'   or the code given as a character vector
-#' @param language the language of the code in lower case, such as
-#'   \code{"javascript"};
+#' @param language the language of the code, such as \code{"javascript"};
 #'   see \code{\link{getPrettifiableLanguages}};
 #'   if the contents are read from a file and \code{language=NA}, then the
 #'   language is guessed from the file extension
@@ -31,12 +30,14 @@
 #'   "return x+1",
 #'   "}"
 #' )
-#' cat(prettify_V8(code, "javascript"))
+#' cat(prettify_V8(code, "JavaScript"))
 prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
 
   if(!requireNamespace("V8")){
     stop("This function requires the 'V8' package.")
   }
+
+  language <- tolower(language)
 
   if(isNA(contents) && isAvailable()){
     context <- RStudioContext()
@@ -174,8 +175,7 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
 #'   \code{NA} (default), to use the file currently opened in RStudio;
 #'   the path to a file;
 #'   or the code given as a character vector
-#' @param language the language of the code in lower case, such as
-#'   \code{"javascript"};
+#' @param language the language of the code, such as \code{"javascript"};
 #'   see \code{\link{getPrettifiableLanguages}};
 #'   if the contents are read from a file and \code{language=NA}, then the
 #'   language is guessed from the file extension
@@ -205,6 +205,8 @@ reindent_V8 <- function(contents = NA, language = NA, tabSize = NULL){
   if(!requireNamespace("V8")){
     stop("This function requires the 'V8' package.")
   }
+
+  language <- tolower(language)
 
   if(isNA(contents) && isAvailable()){
     context <- RStudioContext()

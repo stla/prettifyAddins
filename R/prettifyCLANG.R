@@ -24,6 +24,7 @@
 #' @importFrom tools file_ext
 #' @export
 prettifyCLANG <- function(contents = NA, language = NA, tabSize = NULL){
+
   if(Sys.which("clang-format") == ""){
     stop(
       "This function requires `clang-format`. ",
@@ -31,6 +32,9 @@ prettifyCLANG <- function(contents = NA, language = NA, tabSize = NULL){
       "To reindent C/C++/Java code, you can use the 'Shiny Indent' addin."
     )
   }
+
+  language <- tolower(language)
+
   if(!isNA(contents) && !isFile(contents)){
     if(is.na(language)){
       stop("Please specify the language of this code.")
