@@ -1,8 +1,14 @@
 # prettifyAddins 2.0.0
 
- Now the package provides some functions to prettify, which return the pretty 
+* Added a YAML prettifier.
+* Now the package provides some functions to prettify, which return the pretty 
 code. The addins just call these functions and render the pretty code in 
 RStudio.
+* Among these functions, there is `reindent_PhantomJS`. It allows to reindent 
+code for some languages which were supported by a Shiny addin only, whereas 
+this function does not run a Shiny app. These languages are C, C++, Java, 
+Fortran, Julia, Python, SAS, Shell, and SQL.
+
 
 
 # prettifyAddins 1.0.0
