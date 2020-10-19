@@ -1,3 +1,10 @@
+# prettifyAddins 2.0.0
+
+ Now the package provides some functions to prettify, which return the pretty 
+code. The addins just call these functions and render the pretty code in 
+RStudio.
+
+
 # prettifyAddins 1.0.0
 
 * Added non-interactive versions of the addins, thanks to the V8 package.

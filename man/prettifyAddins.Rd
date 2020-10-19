@@ -5,13 +5,14 @@
 \alias{prettifyAddins}
 \title{Prettify Addins}
 \description{
-This package provides two RStudio addins: \code{Prettify} and \code{Indent}.
-To run an addin, select \code{Prettify} or \code{Indent} from the Addins
-menu within RStudio. The \code{Indent} addin only reindents the code, while
-the \code{Prettify} addin also modifies the code, e.g. it adds trailing
-semi-colons to JavaScript code when they are missing.
+This package provides some RStudio addins: \code{Prettify} addins and
+  \code{Indent} addins. To run an addin, select it from the Addins menu
+  within RStudio. The \code{Indent} addins only reindent the code, while
+  the \code{Prettify} addins also modify the code, e.g. they add trailing
+  semi-colons to JavaScript code when they are missing.
 }
 \examples{
+# Here is the list of supported languages:
 list(
   Shiny = list(
     Prettify = c("HTML", "CSS", "SCSS", "JavaScript", "JSX", "Markdown"),
