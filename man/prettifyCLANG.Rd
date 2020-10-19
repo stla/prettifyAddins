@@ -4,7 +4,7 @@
 \alias{prettifyCLANG}
 \title{Prettify C, C++, Java}
 \usage{
-prettifyCLANG(contents = NA, tabSize = NULL)
+prettifyCLANG(contents = NA, language = NA, tabSize = NULL)
 }
 \arguments{
 \item{contents}{the code to be prettified; there are three possibilities for
@@ -13,10 +13,14 @@ this argument:
 the path to a file;
 or the code given as a character vector}
 
+\item{language}{the language of the code; when the contents is read from a
+file, this option is ignored, because the language is obtained from the
+extension of the file}
+
 \item{tabSize}{number of spaces of the indentation (usually \code{2} or
 \code{4});
 if \code{NULL} (the default), there are two possibilities:
-if the contents are read from the current file in RStudio, then the
+if the contents is read from the current file in RStudio, then the
 number of spaces will be the one you use in RStudio;
 otherwise it is set to \code{2}}
 }

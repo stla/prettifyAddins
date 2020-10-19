@@ -67,7 +67,7 @@ Languages <- function(){
 }
 
 isFile <- function(x){
-  length(x) == 1L && file.exists(x)
+  length(x) == 1L && !is.na(x) && file.exists(x)
 }
 
 isNA <- function(x){

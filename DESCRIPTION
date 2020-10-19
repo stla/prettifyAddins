@@ -29,7 +29,12 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports: shiny, rstudioapi, tools, xml2, webdriver
-Suggests: V8, shinythemes, shinyAce, miniUI
+Suggests: 
+    V8,
+    shinythemes,
+    shinyAce,
+    miniUI,
+    testthat
 URL: https://github.com/stla/prettifyAddins
 BugReports: https://github.com/stla/prettifyAddins/issues
 RoxygenNote: 7.1.1

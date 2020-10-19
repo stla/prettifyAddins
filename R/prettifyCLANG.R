@@ -6,10 +6,13 @@
 #'   \code{NA} (default), to use the file currently opened in RStudio;
 #'   the path to a file;
 #'   or the code given as a character vector
+#' @param language the language of the code; when the contents is read from a
+#'   file, this option is ignored, because the language is obtained from the
+#'   extension of the file
 #' @param tabSize number of spaces of the indentation (usually \code{2} or
 #'   \code{4});
 #'   if \code{NULL} (the default), there are two possibilities:
-#'   if the contents are read from the current file in RStudio, then the
+#'   if the contents is read from the current file in RStudio, then the
 #'   number of spaces will be the one you use in RStudio;
 #'   otherwise it is set to \code{2}
 #'
@@ -20,13 +23,22 @@
 #' @importFrom rstudioapi isAvailable
 #' @importFrom tools file_ext
 #' @export
-prettifyCLANG <- function(contents = NA, tabSize = NULL){
+prettifyCLANG <- function(contents = NA, language = NA, tabSize = NULL){
   if(Sys.which("clang-format") == ""){
     stop(
       "This function requires `clang-format`. ",
       "Either it is not installed, or it is not found. ",
       "To reindent C/C++/Java code, you can use the 'Shiny Indent' addin."
     )
+  }
+  if(!isNA(contents) && !isFile(contents)){
+    if(is.na(language)){
+      stop("Please specify the language of this code.")
+    }
+    if(!is.element(language, c("c", "c++", "cpp", "java"))){
+      stop('The language must be one of "c", "c++", or "java".')
+    }
+    ext <- language
   }
   if(isNA(contents) && isAvailable()){
     context <- RStudioContext()
@@ -60,7 +72,7 @@ prettifyCLANG <- function(contents = NA, tabSize = NULL){
   tmpDir <- tempdir()
   writeLines(.clangFormat(tabSize), file.path(tmpDir, ".clang-format"))
   tmpFile <- tempfile(fileext = paste0(".", ext))
-  writeLines("contents", tmpFile)
+  writeLines(contents, tmpFile)
   prettyCode <- suppressWarnings(system2(
     "clang-format", tmpFile,
     stdout = TRUE, stderr = TRUE
@@ -71,5 +83,5 @@ prettifyCLANG <- function(contents = NA, tabSize = NULL){
       "Probably the code is not valid."
     )
   }
-  prettyCode
+  paste0(prettyCode, collapse = "\n")
 }
