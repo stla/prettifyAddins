@@ -69,7 +69,7 @@ prettifyXML <- function(contents = NA, tabSize = NULL){
   }else{
     tmpFile <- tempfile(fileext = ".xml")
     writeLines(contents, tmpFile)
-    Sys.setenv(XMLLINT_INDENT = tabSize)
+    Sys.setenv(XMLLINT_INDENT = paste0(rep(" ", tabSize), collapse = ""))
     prettyCode <- suppressWarnings(system2(
       "xmllint", paste0("--format ", tmpFile), stdout = TRUE, stderr = TRUE
     ))
@@ -79,6 +79,7 @@ prettifyXML <- function(contents = NA, tabSize = NULL){
         "Probably the code is not valid."
       )
     }
+    prettyCode <- paste0(prettyCode, collapse = "\n")
   }
 
   prettyCode

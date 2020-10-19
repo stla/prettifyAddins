@@ -208,13 +208,13 @@ reindent_V8 <- function(contents = NA, language = NA, tabSize = NULL){
     context <- RStudioContext()
     if(is.na(language)){
       ext <- file_ext(context[["path"]])
-      if(ext %in% names(Languages()[["prettify"]])){
-        language <- Languages()[["prettify"]][[ext]]
+      if(ext %in% names(Languages()[["indentify"]])){
+        language <- Languages()[["indentify"]][[ext]]
       }else{
         stop("Unrecognized or unsupported language.")
       }
     }else{
-      if(!is.element(language, Languages()[["prettify"]])){
+      if(!is.element(language, Languages()[["indentify"]])){
         stop("Unrecognized or unsupported language.")
       }
     }
