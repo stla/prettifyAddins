@@ -40,6 +40,7 @@ shinyUI(miniPage(
         ),
         tags$script(src = "codemirror/mode/meta.js"),
         tags$script(src = "codemirror/mode/clike/clike.js"),
+        tags$script(src = "codemirror/mode/fortran/fortran.js"),
         tags$script(src = "codemirror/mode/julia/julia.js"),
         tags$script(src = "codemirror/mode/python/python.js"),
         tags$script(src = "codemirror/mode/sas/sas.js"),
