@@ -2,6 +2,7 @@ function indentify(codeAndParserAndTabSize) {
   var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
     mode: codeAndParserAndTabSize.parser,
     tabSize: codeAndParserAndTabSize.tabSize,
+    indentUnit: codeAndParserAndTabSize.tabSize,
     lineNumbers: true,
     lineWrapping: true,
     theme: theme

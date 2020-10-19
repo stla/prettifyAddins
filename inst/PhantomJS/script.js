@@ -8,6 +8,16 @@ var page = require("webpage").create();
 page.onConsoleMessage = function (str) {
   console.log(str);
 };
+page.onError = function (msg, trace) {
+  console.error(msg);
+  phantom.exit(1);
+};
+
+phantom.onError = function (msg, trace) {
+  // this is the effective one, with throw
+  console.error(msg);
+  phantom.exit(1);
+};
 
 page.open("about:blank", function (status) {
   if (status === "success") {
@@ -25,7 +35,8 @@ page.open("about:blank", function (status) {
                 document.getElementById("editor"),
                 {
                   mode: args[6],
-                  tabSize: parseInt(args[7])
+                  tabSize: parseInt(args[7]),
+                  indentUnit: parseInt(args[7])
                 }
               );
               CodeMirror.commands.selectAll(editor);
@@ -37,23 +48,28 @@ page.open("about:blank", function (status) {
               console.log(editor.getValue());
             }, args);
           } else {
-            console.log("injectJs failed");
+            console.error("injectJs failed");
+            throw new Error("injectJs failed");
             phantom.exit(1);
           }
         } else {
-          console.log("injectJs failed");
+          console.error("injectJs failed");
+          throw new Error("injectJs failed");
           phantom.exit(1);
         }
       } else {
-        console.log("injectJs failed");
+        console.error("injectJs failed");
+        throw new Error("injectJs failed");
         phantom.exit(1);
       }
     } else {
-      console.log("injectJs failed");
+      console.error("injectJs failed");
+      throw new Error("injectJs failed");
       phantom.exit(1);
     }
   } else {
-    console.log("issue status");
+    console.error("issue with status");
+    throw new Error("issue with status");
     phantom.exit(1);
   }
   phantom.exit(0);

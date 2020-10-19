@@ -81,7 +81,7 @@ reindent_PhantomJS <- function(contents = NA, language = NA, tabSize = NULL){
       }else{
         stop("Unrecognized or unsupported language.")
       }
-    }else if(!isFile(contents) && !is.element(language, languages)){
+    }else if(!isFile(contents) && !is.element(language, Languages()[["codemirror"]])){
       language <- as.list(Languages()[["codemirror"]])[[language]]
       # works before ext=language !
       if(is.null(language)){
