@@ -78,8 +78,7 @@ reindent_PhantomJS <- function(contents = NA, language = NA, tabSize = NULL){
       }else{
         stop("Unrecognized or unsupported language.")
       }
-    }else if(!isFile(contents) &&
-             !is.element(language, Languages()[["codemirror"]])){
+    }else if(!isFile(contents) && !is.element(language, languages)){
       language <- as.list(Languages()[["codemirror"]])[[language]]
       # works before ext=language !
       if(is.null(language)){
@@ -116,7 +115,16 @@ reindent_PhantomJS <- function(contents = NA, language = NA, tabSize = NULL){
 
   prettyCode <- suppressWarnings(system2(
     "phantomjs",
-    c(script, codemirror, formatting, meta, mode, shQuote(code), language),
+    c(
+      script,
+      codemirror,
+      formatting,
+      meta,
+      mode,
+      shQuote(code),
+      language,
+      tabSize
+    ),
     stdout = TRUE, stderr = TRUE
   ))
 
