@@ -180,7 +180,7 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
 #' @importFrom rstudioapi isAvailable
 #' @importFrom tools file_ext
 #' @export
-indentify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
+reindent_V8 <- function(contents = NA, language = NA, tabSize = NULL){
 
   if(!requireNamespace("V8")){
     stop("This function requires the 'V8' package.")

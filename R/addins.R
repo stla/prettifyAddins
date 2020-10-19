@@ -1,11 +1,11 @@
 addins <- list(
   shiny = list(
     prettify = function() prettify_Shiny(),
-    indent = function() indentify_Shiny()
+    indent = function() reindent_Shiny()
   ),
   v8 = list(
     prettify = function() prettify_V8(),
-    indent = function() indentify_V8()
+    indent = function() reindent_V8()
   ),
   xml = function() prettifyXML(),
   clang = function() prettifyCLANG()

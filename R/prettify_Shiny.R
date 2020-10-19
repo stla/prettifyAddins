@@ -140,7 +140,7 @@ prettify_Shiny <- function(
 #' @importFrom rstudioapi isAvailable
 #' @importFrom tools file_ext
 #' @export
-indentify_Shiny <- function(
+reindent_Shiny <- function(
   contents = NA, language = NA, tabSize = NULL, themeInfo = NULL
 ){
   languages <- c(Languages()[["indentify"]], Languages()[["codemirror"]])
