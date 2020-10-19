@@ -13,8 +13,7 @@ this argument:
 the path to a file;
 or the code given as a character vector}
 
-\item{language}{the language of the code in lower case, such as
-\code{"javascript"};
+\item{language}{the language of the code, such as \code{"javascript"};
 see \code{\link{getPrettifiableLanguages}};
 if the contents are read from a file and \code{language=NA}, then the
 language is guessed from the file extension}
@@ -40,5 +39,5 @@ code <- c(
   "return x+1",
   "}"
 )
-cat(prettify_V8(code, "javascript"))
+cat(prettify_V8(code, "JavaScript"))
 }
