@@ -25,7 +25,7 @@ Addin <- function(f){
     message("Something went wrong. ", contents$message)
     return(invisible())
   }
-  setDocumentContents(contents, context[["id"]])
+  if(!is.null(contents)) setDocumentContents(contents, context[["id"]])
 }
 
 PrettifyShiny <- function() Addin(addins$shiny$prettify)

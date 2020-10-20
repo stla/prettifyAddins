@@ -42,7 +42,7 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
   if(isNA(contents) && isAvailable()){
     context <- RStudioContext()
     if(is.na(language)){
-      ext <- file_ext(context[["path"]])
+      ext <- tolower(file_ext(context[["path"]]))
       if(ext %in% names(Languages()[["prettify"]])){
         language <- Languages()[["prettify"]][[ext]]
       }else{
@@ -133,6 +133,7 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
   }
   if(parser == "markdown"){
     ctx$source(jsfile("parser-html.js"))
+    ctx$source(jsfile("parser-yaml.js"))
   }
   prettify <- paste0(
     c(
@@ -211,7 +212,7 @@ reindent_V8 <- function(contents = NA, language = NA, tabSize = NULL){
   if(isNA(contents) && isAvailable()){
     context <- RStudioContext()
     if(is.na(language)){
-      ext <- file_ext(context[["path"]])
+      ext <- tolower(file_ext(context[["path"]]))
       if(ext %in% names(Languages()[["indentify"]])){
         language <- Languages()[["indentify"]][[ext]]
       }else{

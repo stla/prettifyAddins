@@ -49,7 +49,7 @@ prettify_Shiny <- function(
   if(isNA(contents) && isAvailable()){
     context <- RStudioContext()
     if(is.na(language)){
-      ext <- file_ext(context[["path"]])
+      ext <- tolower(file_ext(context[["path"]]))
       if(ext %in% names(Languages()[["prettify"]])){
         language <- Languages()[["prettify"]][[ext]]
       }else{
@@ -175,7 +175,7 @@ reindent_Shiny <- function(
   if(isNA(contents) && isAvailable()){
     context <- RStudioContext()
     if(is.na(language)){
-      ext <- fileExt(context[["path"]])
+      ext <- tolower(fileExt(context[["path"]]))
       if(ext %in% names(languages)){
         language <- languages[[ext]]
       }else{

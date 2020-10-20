@@ -1,6 +1,7 @@
 # prettifyAddins 2.0.0
 
-* Added a YAML prettifier.
+* Added a YAML prettifier. It obviously acts on YAML files, but also on the 
+YAML metadata of (R)Markdown files.
 * Now the package provides some functions to prettify, which return the pretty 
 code. The addins just call these functions and render the pretty code in 
 RStudio.
