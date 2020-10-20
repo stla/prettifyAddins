@@ -2,6 +2,8 @@
 
 * Added a YAML prettifier. It obviously acts on YAML files, but also on the 
 YAML metadata of (R)Markdown files.
+* Added a LaTeX prettifier. It can be used for Sweave files. It requires the 
+command-line utility `latexindent`, which is included in MikTeX and TeX Live.
 * Now the package provides some functions to prettify, which return the pretty 
 code. The addins just call these functions and render the pretty code in 
 RStudio.
