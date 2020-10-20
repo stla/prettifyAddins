@@ -44,3 +44,21 @@ test_that("PhantomJS reindent C++ from a file", {
     "double f(double x){\n  double y= x+1;\n  return y ;\n}\n"
   )
 })
+
+test_that("PhantomJS reindent Julia with default `tabSize`", {
+  skip_if(Sys.which("phantomjs") == "", message = "'phantomjs' not found")
+  code <- c(
+    "function mandelbrot(a)",
+    "z = 0",
+    "for i=1:50",
+    "z = z^2 + a",
+    "end",
+    "return z",
+    "end"
+  )
+  prettyCode <- reindent_PhantomJS(code, language = "julia")
+  expect_equal(
+    prettyCode,
+    "function mandelbrot(a)\n  z = 0\n  for i=1:50\n    z = z^2 + a\n  end\n  return z\nend\n"
+  )
+})
