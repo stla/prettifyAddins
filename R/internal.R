@@ -19,7 +19,8 @@ getPrettifiableLanguages <- function(){
     CLANG = c("C(++)", "Java"),
     XML = c("XML", "SVG"),
     PhantomJS = c("C(++)", "Fortran", "Java", "Julia", "Python", "SAS",
-                  "Shell", "SQL")
+                  "Shell", "SQL"),
+    LaTeX = c("LaTeX", "Sweave")
   )
 }
 

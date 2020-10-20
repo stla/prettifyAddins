@@ -32,3 +32,8 @@ Name: Indent (PhantomJS)
 Description: Indent C/C++/Python/SQL and more.
 Binding: IndentPhantomJS
 Interactive: false
+
+Name: Prettify LaTeX
+Description: Prettify LaTeX/Sweave.
+Binding: PrettifyLaTeX
+Interactive: false

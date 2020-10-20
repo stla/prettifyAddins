@@ -3,6 +3,7 @@
 export(getPrettifiableLanguages)
 export(install_phantomjs)
 export(prettifyCLANG)
+export(prettifyLaTeX)
 export(prettifyXML)
 export(prettify_Shiny)
 export(prettify_V8)
