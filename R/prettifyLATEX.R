@@ -64,14 +64,16 @@ prettifyLaTeX <- function(contents = NA, tabSize = NULL){
   }
   ext0 <- ifelse(ext == "rnw", "tex", ext)
   tmpDir <- tempdir()
-  #writeLines(.clangFormat(tabSize), file.path(tmpDir, ".clang-format"))
   tmpFile <- tempfile(fileext = paste0(".", ext0))
   writeLines(contents, tmpFile)
   prettyCode <- suppressWarnings(system2(
     "latexindent",
     c(
       tmpFile,
-      sprintf("-y='defaultIndent:\"%s\"'", paste0(rep(" ", tabSize), collapse = ""))
+      sprintf(
+        "-y='defaultIndent:\"%s\",indentRules:displayMath:\"\",indentRules:displayMathTeX:\"\"'",
+        paste0(rep(" ", tabSize), collapse = "")
+      )
     ),
     stdout = TRUE, stderr = TRUE
   ))
