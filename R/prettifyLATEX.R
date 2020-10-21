@@ -1,6 +1,6 @@
 #' Prettify LaTeX
 #' @description Prettify LaTeX code, including Sweave code, \code{sty} files,
-#'   \code{cls} files, and \code{bib} files,
+#'   \code{cls} files, and \code{bib} files.
 #'
 #' @param contents the code to be prettified; there are three possibilities for
 #'   this argument:

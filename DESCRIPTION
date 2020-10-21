@@ -28,7 +28,7 @@ Description: Provides 'RStudio' addins to prettify 'HTML', 'CSS', 'SCSS', 'JavaS
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Imports: shiny, rstudioapi, tools, xml2, webdriver
+Imports: shiny, rstudioapi, tools, xml2, webdriver, XRJulia
 Suggests: 
     V8,
     shinythemes,

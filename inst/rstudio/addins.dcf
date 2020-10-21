@@ -37,3 +37,8 @@ Name: Prettify LaTeX
 Description: Prettify LaTeX/Sweave.
 Binding: PrettifyLaTeX
 Interactive: false
+
+Name: Prettify Julia
+Description: Prettify Julia.
+Binding: PrettifyJulia
+Interactive: false

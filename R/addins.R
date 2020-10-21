@@ -10,7 +10,8 @@ addins <- list(
   xml = function() prettifyXML(),
   clang = function() prettifyCLANG(),
   phantomjs = function() reindent_PhantomJS(),
-  latex = function() prettifyLaTeX()
+  latex = function() prettifyLaTeX(),
+  julia = function() prettifyJulia()
 )
 
 #' @importFrom rstudioapi setDocumentContents
@@ -37,3 +38,4 @@ PrettifyXML <- function() Addin(addins$xml)
 PrettifyCLANG <- function() Addin(addins$clang)
 IndentPhantomJS <- function() Addin(addins$phantomjs)
 PrettifyLaTeX <- function() Addin(addins$latex)
+PrettifyJulia <- function() Addin(addins$julia)
