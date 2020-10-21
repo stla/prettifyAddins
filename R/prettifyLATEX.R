@@ -13,6 +13,8 @@
 #'   if the contents is read from the current file in RStudio, then the
 #'   number of spaces will be the one you use in RStudio;
 #'   otherwise it is set to \code{2}
+#' @param log logical, whether to generate a log file (it will be named
+#'   \code{indent.log})
 #'
 #' @return The pretty code in a character string.
 #'
@@ -21,7 +23,7 @@
 #' @importFrom rstudioapi isAvailable
 #' @importFrom tools file_ext
 #' @export
-prettifyLaTeX <- function(contents = NA, tabSize = NULL){
+prettifyLaTeX <- function(contents = NA, tabSize = NULL, log = FALSE){
 
   if(Sys.which("latexindent") == ""){
     stop(
@@ -66,6 +68,7 @@ prettifyLaTeX <- function(contents = NA, tabSize = NULL){
   tmpDir <- tempdir()
   tmpFile <- tempfile(fileext = paste0(".", ext0))
   writeLines(contents, tmpFile)
+  cruft <- if(!log) paste0("--cruft=", shQuote(tmpDir))
   prettyCode <- suppressWarnings(system2(
     "latexindent",
     c(
@@ -73,7 +76,8 @@ prettifyLaTeX <- function(contents = NA, tabSize = NULL){
       sprintf(
         "-y='defaultIndent:\"%s\",indentRules:displayMath:\"\",indentRules:displayMathTeX:\"\"'",
         paste0(rep(" ", tabSize), collapse = "")
-      )
+      ),
+      cruft
     ),
     stdout = TRUE, stderr = TRUE
   ))

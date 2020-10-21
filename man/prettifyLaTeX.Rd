@@ -4,7 +4,7 @@
 \alias{prettifyLaTeX}
 \title{Prettify LaTeX}
 \usage{
-prettifyLaTeX(contents = NA, tabSize = NULL)
+prettifyLaTeX(contents = NA, tabSize = NULL, log = FALSE)
 }
 \arguments{
 \item{contents}{the code to be prettified; there are three possibilities for
@@ -19,6 +19,9 @@ if \code{NULL} (the default), there are two possibilities:
 if the contents is read from the current file in RStudio, then the
 number of spaces will be the one you use in RStudio;
 otherwise it is set to \code{2}}
+
+\item{log}{logical, whether to generate a log file (it will be named
+\code{indent.log})}
 }
 \value{
 The pretty code in a character string.
