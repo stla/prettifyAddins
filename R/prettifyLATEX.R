@@ -74,7 +74,13 @@ prettifyLaTeX <- function(contents = NA, tabSize = NULL, log = FALSE){
     c(
       tmpFile,
       sprintf(
-        "-y='defaultIndent:\"%s\",indentRules:displayMath:\"\",indentRules:displayMathTeX:\"\"'",
+        sprintf("-y='%s'",
+                paste0(c(
+                  "defaultIndent:\"%s\"",
+                  "indentRules:displayMath:\"\"",
+                  "indentRules:displayMathTeX:\"\""
+                ), collapse = ",")
+        ),
         paste0(rep(" ", tabSize), collapse = "")
       ),
       cruft
