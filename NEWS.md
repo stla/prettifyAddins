@@ -6,6 +6,7 @@ YAML metadata of (R)Markdown files.
 command-line utility `latexindent`, which is included in MikTeX and TeX Live.
 * Added a Julia prettifier. It requires Julia and the Julia package 
 `JuliaFormatter`.
+* Added a Julia prettifier. It requires [black](https://github.com/psf/black).
 * Now the package provides some functions to prettify, which return the pretty 
 code. The addins just call these functions and render the pretty code in 
 RStudio.

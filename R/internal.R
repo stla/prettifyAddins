@@ -21,7 +21,8 @@ getPrettifiableLanguages <- function(){
     PhantomJS = c("C(++)", "Fortran", "Java", "Julia", "Python", "SAS",
                   "Shell", "SQL"),
     LaTeX = c("LaTeX", "Sweave"),
-    Julia = "Julia"
+    Julia = "Julia",
+    Python = "Python"
   )
 }
 

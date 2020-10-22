@@ -11,7 +11,8 @@ addins <- list(
   clang = function() prettifyCLANG(),
   phantomjs = function() reindent_PhantomJS(),
   latex = function() prettifyLaTeX(),
-  julia = function() prettifyJulia()
+  julia = function() prettifyJulia(),
+  python = function() prettifyPython()
 )
 
 #' @importFrom rstudioapi setDocumentContents
@@ -39,3 +40,4 @@ PrettifyCLANG <- function() Addin(addins$clang)
 IndentPhantomJS <- function() Addin(addins$phantomjs)
 PrettifyLaTeX <- function() Addin(addins$latex)
 PrettifyJulia <- function() Addin(addins$julia)
+PrettifyPython <- function() Addin(addins$python)

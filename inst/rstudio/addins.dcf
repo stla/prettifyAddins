@@ -42,3 +42,8 @@ Name: Prettify Julia
 Description: Prettify Julia.
 Binding: PrettifyJulia
 Interactive: false
+
+Name: Prettify Python
+Description: Prettify Python.
+Binding: PrettifyPython
+Interactive: false
