@@ -22,12 +22,18 @@ are not interactive. The *'Prettify C/C++/Java'* addin requires `clang-format`
 (it is possible to reindent C/C++/Java (and more) with the *'Indent (shiny)'* 
 addin).
 
-- As of **version 2.0.0**, there is a new addin: *'Indent (PhantomJS)'*. It 
-allows to reindent code for some languages which were supported by the 
-*'Indent (shiny)'* addin only, whereas this addin does not run a Shiny app. 
-These languages are C, C++, Java, Fortran, Julia, Python, SAS, Scala, Shell, 
-and SQL. This addin requires `phantomjs` (the package provides a function to 
-install this software).
+- As of **version 2.0.0**, there are four new addins: 
+  - *'Indent (PhantomJS)':* allows to reindent code for some languages which 
+  were supported by the *'Indent (shiny)'* addin only, whereas this addin does 
+  not run a Shiny app; these languages are C, C++, Java, Fortran, Julia, Python, 
+  SAS, Scala, Shell, and SQL. This addin requires `phantomjs` (the package 
+  provides a function to install this software).
+  - *'Prettify LaTeX':* to prettify LaTeX code; works for Sweave code. It 
+  requires `latexindent`, which is included in MikTeX and TeX Live 
+  distributions.
+  - *'Prettify Julia':* to prettify Julia code. It requires Julia.
+  - *'Prettify Python':* to prettify Python code. It requires 
+  [black](https://github.com/psf/black).
 
 Moreover, this version exports the functions used to prettify/reindent. 
 For example:
