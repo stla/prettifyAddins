@@ -22,7 +22,7 @@ are not interactive. The *'Prettify C/C++/Java'* addin requires `clang-format`
 (it is possible to reindent C/C++/Java (and more) with the *'Indent (shiny)'* 
 addin).
 
-- As of **version 2.0.0**, there are four new addins: 
+- As of **version 2.0.0**, there are five new addins: 
   - *'Indent (PhantomJS)':* allows to reindent code for some languages which 
   were supported by the *'Indent (shiny)'* addin only, whereas this addin does 
   not run a Shiny app; these languages are C, C++, Java, Fortran, Julia, Python, 
@@ -34,6 +34,7 @@ addin).
   - *'Prettify Julia':* to prettify Julia code. It requires Julia.
   - *'Prettify Python':* to prettify Python code. It requires 
   [black](https://github.com/psf/black).
+  - *'Prettify (formatCodeApi)':* to prettify Java, JSON, and Ruby. 
 
 Moreover, this version exports the functions used to prettify/reindent. 
 For example:
