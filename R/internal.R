@@ -22,7 +22,8 @@ getPrettifiableLanguages <- function(){
                   "Shell", "SQL"),
     LaTeX = c("LaTeX", "Sweave"),
     Julia = "Julia",
-    Python = "Python"
+    Python = "Python",
+    FCA = c("Java", "JSON", "Ruby")
   )
 }
 
@@ -66,6 +67,12 @@ Languages <- function(){
       scala = "text/x-scala",
       sh = "shell",
       sql = "sql"
+    ),
+    FCA = c(
+      java = "java",
+      json = "json",
+      ru = "ruby",
+      ruby = "ruby"
     )
   )
 }

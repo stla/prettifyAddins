@@ -6,8 +6,7 @@
 #'   \code{NA} (default), to use the file currently opened in RStudio;
 #'   the path to a file;
 #'   or the code given as a character vector
-#' @param language the language of the code in lower case, such as
-#'   \code{"python"};
+#' @param language the language of the code, such as \code{"python"};
 #'   see \code{\link{getPrettifiableLanguages}};
 #'   if the contents are read from a file and \code{language=NA}, then the
 #'   language is guessed from the file extension
@@ -35,7 +34,8 @@
 #'   'print "it is not one"'
 #' )
 #'
-#' \dontrun{cat(reindent_PhantomJS(code, "python"))}
+#' \dontrun{
+#' cat(reindent_PhantomJS(code, "python"))}
 reindent_PhantomJS <- function(contents = NA, language = NA, tabSize = NULL){
   if(Sys.which("phantomjs") == ""){
     stop(

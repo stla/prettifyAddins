@@ -47,3 +47,8 @@ Name: Prettify Python
 Description: Prettify Python.
 Binding: PrettifyPython
 Interactive: false
+
+Name: Prettify (formatCodeApi)
+Description: Prettify Java/JSON/Ruby.
+Binding: PrettifyFCA
+Interactive: false
