@@ -18,7 +18,7 @@
 #' @importFrom rstudioapi isAvailable
 #' @importFrom tools file_ext
 #' @importFrom httr http_error POST content content_type
-#' @importFrom utils URLencode
+#' @importFrom utils URLdecode
 #' @export
 #'
 #' @examples library(prettifyAddins)

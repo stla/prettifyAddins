@@ -18,7 +18,6 @@ this function does not run a Shiny app. These languages are C, C++, Java,
 Fortran, Julia, Python, SAS, Scala, Shell, and SQL.
 
 
-
 # prettifyAddins 1.0.0
 
 * Added non-interactive versions of the addins, thanks to the V8 package.
