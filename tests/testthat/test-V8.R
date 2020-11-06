@@ -45,6 +45,7 @@ test_that("V8 reindent JavaScript with default `tabSize`", {
 
 test_that("V8 reindent JavaScript with given `tabSize`", {
   skip_if_not_installed("V8")
+  skip_if(substr(V8::engine_info()$version, 1 , 1) < 6, "V8 engine too old.")
   code <- c(
     "function f(x){",
     "var y= x+1",
