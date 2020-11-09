@@ -1,3 +1,8 @@
+# prettifyAddins 2.0.2
+
+Fixed an issue with the CRAN checks.
+
+
 # prettifyAddins 2.0.1
 
 Fixed an issue with the CRAN checks.
