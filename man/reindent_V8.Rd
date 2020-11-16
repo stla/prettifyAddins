@@ -39,5 +39,5 @@ code <- c(
   "return x+1",
   "}"
 )
-cat(reindent_V8(code, "javascript"))
+\donttest{cat(reindent_V8(code, "javascript"))}
 }

@@ -30,7 +30,7 @@
 #'   "return x+1",
 #'   "}"
 #' )
-#' cat(prettify_V8(code, "JavaScript"))
+#' \donttest{cat(prettify_V8(code, "JavaScript"))}
 prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
 
   if(!requireNamespace("V8")){
@@ -200,7 +200,7 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
 #'   "return x+1",
 #'   "}"
 #' )
-#' cat(reindent_V8(code, "javascript"))
+#' \donttest{cat(reindent_V8(code, "javascript"))}
 reindent_V8 <- function(contents = NA, language = NA, tabSize = NULL){
 
   if(!requireNamespace("V8")){

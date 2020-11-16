@@ -39,5 +39,5 @@ code <- c(
   "return x+1",
   "}"
 )
-cat(prettify_V8(code, "JavaScript"))
+\donttest{cat(prettify_V8(code, "JavaScript"))}
 }
