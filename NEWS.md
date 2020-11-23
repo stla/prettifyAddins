@@ -1,5 +1,10 @@
 # prettifyAddins 2.0.3
 
+Upgraded the 'Prettier' library.
+
+
+# prettifyAddins 2.0.3
+
 Fixed an issue with the CRAN checks.
 
 
