@@ -124,7 +124,7 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
     )
   })
 
-  ctx$source(addsfile("trimEnd.js"))
+  ctx$source(addsfile("StringTrim.js"))
 
   js <- switch(
     parser,

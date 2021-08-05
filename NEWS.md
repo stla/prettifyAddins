@@ -1,3 +1,9 @@
+# prettifyAddins 2.1.1.9000
+
+Defined JavaScript method `String.prototype.trimStart` for old versions of V8 
+which do not support it.
+
+
 # prettifyAddins 2.1.1
 
 Defined JavaScript method `String.prototype.trimEnd` for old versions of V8 

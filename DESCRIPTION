@@ -1,7 +1,7 @@
 Package: prettifyAddins
 Type: Package
 Title: 'RStudio' Addins to Prettify 'JavaScript', 'C++', 'Python', and More
-Version: 2.1.1
+Version: 2.1.1.9000
 Authors@R: c(
     person(
       "Stéphane", "Laurent", 
