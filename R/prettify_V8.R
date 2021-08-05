@@ -108,6 +108,12 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
     )
   }
 
+  addsfile <- function(file){
+    system.file(
+      "V8adds", file, package = "prettifyAddins"
+    )
+  }
+
   ctx <- V8::v8(console = FALSE)
   tryCatch({
     ctx$source(jsfile("standalone.js"))
@@ -117,6 +123,8 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
       "Probably your version of the 'V8' engine is not recent enough."
     )
   })
+
+  ctx$source(addsfile("trimEnd.js"))
 
   js <- switch(
     parser,
