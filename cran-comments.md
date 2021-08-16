@@ -1,4 +1,4 @@
-# prettifyAddins 2.1.1
+# prettifyAddins 2.1.2
 
 
 ## Test environments
