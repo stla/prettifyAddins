@@ -240,7 +240,7 @@ reindent_Shiny <- function(
   options(prettify.action = "indentify")
   options(prettify.tabSize = tabSize)
   codemirror = !is.element(
-    language, c("css", "html", "javascript", "jsx", "scss")
+    language, c("css", "html", "javascript", "jsx", "scss", "typescript")
   )
   options(prettify.codemirror = codemirror)
   runGadget(

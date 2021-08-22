@@ -14,7 +14,8 @@ if(action == "prettify"){
     jsx = "babel",
     markdown = "markdown",
     scss = "css",
-    yaml = "yaml"
+    yaml = "yaml",
+    typescript = "typescript"
   )
 }else{
   if(codemirror){
@@ -27,7 +28,8 @@ if(action == "prettify"){
       rhtml = "html",
       javascript = "js",
       jsx = "js",
-      scss = "css"
+      scss = "css",
+      typescript = "ts"
     )
   }
 }

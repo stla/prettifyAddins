@@ -1,20 +1,20 @@
 Name: Prettify (shiny)
-Description: Prettify JavaScript/JSX/HTML/CSS/SCSS/Markdown/YAML.
+Description: Prettify JavaScript/JSX/TypeScript/HTML/CSS/SCSS/Markdown/YAML.
 Binding: PrettifyShiny
 Interactive: true
 
 Name: Indent (shiny)
-Description: Indent JavaScript/HTML/CSS/C++ and more.
+Description: Indent JavaScript/TypeScript/HTML/CSS/C++ and more.
 Binding: IndentShiny
 Interactive: true
 
 Name: Prettify (V8)
-Description: Prettify JavaScript/JSX/HTML/CSS/SCSS/Markdown/YAML.
+Description: Prettify JavaScript/JSX/TypeScript/HTML/CSS/SCSS/Markdown/YAML.
 Binding: PrettifyV8
 Interactive: false
 
 Name: Indent (V8)
-Description: Indent JavaScript/JSX/HTML/CSS/SCSS.
+Description: Indent JavaScript/JSX/TypeScript/HTML/CSS/SCSS.
 Binding: IndentV8
 Interactive: false
 

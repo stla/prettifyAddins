@@ -1,3 +1,9 @@
+# prettifyAddins 2.1.2.9000
+
+Possibility to prettify or indent TypeScript (`.ts` and `.tsx` files).
+
+
+
 # prettifyAddins 2.1.2
 
 Defined JavaScript method `String.prototype.trimStart` for old versions of V8 

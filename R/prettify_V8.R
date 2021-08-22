@@ -98,6 +98,9 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
     markdown = "markdown",
     rmd = "markdown",
     scss = "css",
+    ts = "typescript",
+    tsx = "typescript",
+    typescript = "typescript",
     yaml = "yaml"
   )
 
@@ -132,7 +135,8 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
     html = "parser-html.js",
     markdown = "parser-markdown.js",
     css = "parser-postcss.js",
-    yaml = "parser-yaml.js"
+    yaml = "parser-yaml.js",
+    typescript = "parser-typescript.js"
   )
   ctx$source(jsfile(js))
   if(parser %in% c("html","markdown")){
@@ -271,7 +275,10 @@ reindent_V8 <- function(contents = NA, language = NA, tabSize = NULL){
     javascript = "js",
     js = "js",
     jsx = "js",
-    scss = "css"
+    scss = "css",
+    typescript = "ts",
+    ts = "ts",
+    tsx = "ts",
   )
 
   jsfile <- system.file(
@@ -303,6 +310,9 @@ reindent_V8 <- function(contents = NA, language = NA, tabSize = NULL){
       "        break;",
       "      case \"html\":",
       "        prettyCode = indent.html(code, {tabString: tabString});",
+      "        break;",
+      "      case \"ts\":",
+      "        prettyCode = indent.ts(code, {tabString: tabString});",
       "        break;",
       "    }",
       "  } catch(err) {",

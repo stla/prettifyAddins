@@ -31,6 +31,10 @@ function indentify(codeAndParserAndTabSize) {
         prettyCode =
           indent.html(codeAndParserAndTabSize.code, {tabString: tabString});
         break;
+      case "ts":
+        prettyCode =
+          indent.ts(codeAndParserAndTabSize.code, {tabString: tabString});
+        break;
     }
     Shiny.setInputValue("prettyCode", prettyCode, { priority: "event" });
   } catch(err) {
