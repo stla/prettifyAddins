@@ -184,3 +184,4 @@
 ^inst/shinyApp/www/codemirror/theme/yonce\.css$
 ^inst/shinyApp/www/codemirror/theme/zenburn\.css$
 ^CRAN-RELEASE$
+^\.github$
