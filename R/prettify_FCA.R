@@ -32,7 +32,7 @@
 #' cat(prettify_FCA(code, "json"))}
 prettify_FCA <- function(contents = NA, language = NA){
 
-  if(http_error("www.google.com")){
+  if(http_error("http://www.google.com")){
     stop(
       "This function requires an Internet connection."
     )

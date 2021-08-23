@@ -5,6 +5,7 @@
 
 * Windows 10, R 4.1.0
 * win-builder (devel)
+* MAC OS (via Github action)
 
 ## R CMD check results
 
