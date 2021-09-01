@@ -1,7 +1,6 @@
-# prettifyAddins 2.1.2.9000
+# prettifyAddins 2.2.0
 
 Possibility to prettify or indent TypeScript (`.ts` and `.tsx` files).
-
 
 
 # prettifyAddins 2.1.2
