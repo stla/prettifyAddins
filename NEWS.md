@@ -1,3 +1,8 @@
+# prettifyAddins 2.3.0
+
+Better SQL formatter.
+
+
 # prettifyAddins 2.2.0
 
 Possibility to prettify or indent TypeScript (`.ts` and `.tsx` files).

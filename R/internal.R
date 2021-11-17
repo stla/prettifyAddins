@@ -7,13 +7,13 @@ getPrettifiableLanguages <- function(){
   list(
     Shiny = list(
       Prettify = c("HTML", "CSS", "SCSS", "JavaScript", "JSX", "Markdown",
-                   "TypeScript", "YAML"),
+                   "SQL", "TypeScript", "YAML"),
       Indent = c("HTML", "CSS", "SCSS", "JavaScript", "JSX", "C(++)", "Fortran",
                  "Java", "Julia", "Python", "SAS", "Shell", "SQL", "TypeScript")
     ),
     V8 = list(
       Prettify = c("HTML", "CSS", "SCSS", "JavaScript", "JSX", "Markdown",
-                   "TypeScript", "YAML"),
+                   "SQL", "TypeScript", "YAML"),
       Indent = c("HTML", "CSS", "SCSS", "JavaScript", "JSX", "TypeScript")
     ),
     CLANG = c("C(++)", "Java"),
@@ -40,6 +40,7 @@ Languages <- function(){
       markdown = "markdown",
       rmd = "markdown",
       scss = "scss",
+      sql = "sql",
       ts = "typescript",
       tsx = "typescript",
       yaml = "yaml",

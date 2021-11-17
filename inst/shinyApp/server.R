@@ -14,6 +14,7 @@ if(action == "prettify"){
     jsx = "babel",
     markdown = "markdown",
     scss = "css",
+    sql = "sql",
     yaml = "yaml",
     typescript = "typescript"
   )

@@ -98,6 +98,7 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
     markdown = "markdown",
     rmd = "markdown",
     scss = "css",
+    sql = "sql",
     ts = "typescript",
     tsx = "typescript",
     typescript = "typescript",
@@ -105,9 +106,9 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
   )
 
 
-  jsfile <- function(file){
+  jsfile <- function(file, folder = "prettier"){
     system.file(
-      "shinyApp", "www", "prettier", file, package = "prettifyAddins"
+      "shinyApp", "www", folder, file, package = "prettifyAddins"
     )
   }
 
@@ -118,56 +119,82 @@ prettify_V8 <- function(contents = NA, language = NA, tabSize = NULL){
   }
 
   ctx <- V8::v8(console = FALSE)
-  tryCatch({
-    ctx$source(jsfile("standalone.js"))
-  }, error = function(e){
-    stop(
-      "'V8' has failed to source some files. ",
-      "Probably your version of the 'V8' engine is not recent enough."
+
+  if(parser != "sql"){
+    tryCatch({
+      ctx$source(jsfile("standalone.js"))
+    }, error = function(e){
+      stop(
+        "'V8' has failed to source some files. ",
+        "Probably your version of the 'V8' engine is not recent enough."
+      )
+    })
+
+    ctx$source(addsfile("StringTrim.js"))
+
+    js <- switch(
+      parser,
+      babel = "parser-babel.js",
+      html = "parser-html.js",
+      markdown = "parser-markdown.js",
+      css = "parser-postcss.js",
+      yaml = "parser-yaml.js",
+      typescript = "parser-typescript.js"
     )
-  })
-
-  ctx$source(addsfile("StringTrim.js"))
-
-  js <- switch(
-    parser,
-    babel = "parser-babel.js",
-    html = "parser-html.js",
-    markdown = "parser-markdown.js",
-    css = "parser-postcss.js",
-    yaml = "parser-yaml.js",
-    typescript = "parser-typescript.js"
-  )
-  ctx$source(jsfile(js))
-  if(parser %in% c("html","markdown")){
-    ctx$source(jsfile("parser-babel.js"))
-    ctx$source(jsfile("parser-postcss.js"))
+    ctx$source(jsfile(js))
+    if(parser %in% c("html","markdown")){
+      ctx$source(jsfile("parser-babel.js"))
+      ctx$source(jsfile("parser-postcss.js"))
+    }
+    if(parser == "markdown"){
+      ctx$source(jsfile("parser-html.js"))
+      ctx$source(jsfile("parser-yaml.js"))
+    }
+    prettify <- paste0(
+      c(
+        "function prettify(code, parser, tabSize) {",
+        "  var prettyCode = null, error = null;",
+        "  try {",
+        "    prettyCode = prettier.format(code, {",
+        "      parser: parser,",
+        "      plugins: prettierPlugins,",
+        "      trailingComma: \"none\",",
+        "      tabWidth: tabSize,",
+        "      printWidth: 80",
+        "    });",
+        "  } catch(err) {",
+        "    error = err.message;",
+        "  }",
+        "  return {prettyCode: prettyCode, error: error};",
+        "}",
+        "var result = prettify(code, parser, tabSize);"
+      ),
+      collapse = "\n"
+    )
+  }else{
+    ctx$source(jsfile("regexpu-core_bundle.js", folder = "sql-formatter"))
+    ctx$eval("var rewritePattern = require('regexpu-core');")
+    ctx$source(jsfile("sql-formatter_bundle.js", folder = "sql-formatter"))
+    prettify <- paste0(
+      c(
+        "var sqlFormatter = require('sql-formatter');",
+        "function prettify(code, tabSize) {",
+        "  var prettyCode = null, error = null;",
+        "  try {",
+        "    prettyCode = sqlFormatter.format(code, {",
+        "      indent: ' '.repeat(tabSize)",
+        "    });",
+        "  } catch(err) {",
+        "    error = err.message;",
+        "  }",
+        "  return {prettyCode: prettyCode, error: error};",
+        "}",
+        "var result = prettify(code, tabSize);"
+      ),
+      collapse = "\n"
+    )
   }
-  if(parser == "markdown"){
-    ctx$source(jsfile("parser-html.js"))
-    ctx$source(jsfile("parser-yaml.js"))
-  }
-  prettify <- paste0(
-    c(
-      "function prettify(code, parser, tabSize) {",
-      "  var prettyCode = null, error = null;",
-      "  try {",
-      "    prettyCode = prettier.format(code, {",
-      "      parser: parser,",
-      "      plugins: prettierPlugins,",
-      "      trailingComma: \"none\",",
-      "      tabWidth: tabSize,",
-      "      printWidth: 80",
-      "    });",
-      "  } catch(err) {",
-      "    error = err.message;",
-      "  }",
-      "  return {prettyCode: prettyCode, error: error};",
-      "}",
-      "var result = prettify(code, parser, tabSize);"
-    ),
-    collapse = "\n"
-  )
+
   ctx$assign("code", code)
   ctx$assign("parser", parser)
   ctx$assign("tabSize", tabSize)

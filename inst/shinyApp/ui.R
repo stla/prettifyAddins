@@ -10,6 +10,8 @@ codemirror <- getOption("prettify.codemirror")
 
 tabSize <- getOption("prettify.tabSize")
 
+language <- getOption("prettify.language")
+
 
 shinyUI(miniPage(
 
@@ -48,6 +50,11 @@ shinyUI(miniPage(
         tags$script(src = "codemirror/mode/sql/sql.js"),
         tags$script(src = "autoFormatRange.js"),
         tags$link(rel = "stylesheet", href = "prettify.css")
+      )
+    }else if(language == "sql"){
+      tagList(
+        tags$script(src = "sql-formatter/sql-formatter.min.js"),
+        tags$script(src = "prettify.js")
       )
     }else{
       tagList(

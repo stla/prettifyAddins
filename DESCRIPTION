@@ -1,7 +1,7 @@
 Package: prettifyAddins
 Type: Package
 Title: 'RStudio' Addins to Prettify 'JavaScript', 'C++', 'Python', and More
-Version: 2.2.0
+Version: 2.3.0
 Authors@R: c(
     person(
       "Stéphane", "Laurent", 
@@ -22,9 +22,14 @@ Authors@R: c(
       "Marijn", "Haverbeke",
       role = c("ctb", "cph"),
       comment = "'CodeMirror' library"
+    ),
+    person(
+      "George", "Leslie-Waksman and other contributors",
+      role = c("ctb", "cph"),
+      comment = "'sql-formatter' library"
     )
   )
-Description: Provides 'RStudio' addins to prettify 'HTML', 'CSS', 'SCSS', 'JavaScript', 'JSX', 'Markdown', 'C(++)', 'LaTeX', 'Python', 'Julia', 'XML', 'Java', 'JSON', 'Ruby', and to reindent 'C(++)', 'Fortran', 'Java', 'Julia', 'Python', 'SAS', 'Scala', 'Shell' and 'SQL'. Two kinds of addins are provided: 'Prettify' and 'Indent'. The 'Indent' addins only reindent the code, while the 'Prettify' addins also modify the code, e.g. trailing semi-colons are added to 'JavaScript' code when they are missing. 
+Description: Provides 'RStudio' addins to prettify 'HTML', 'CSS', 'SCSS', 'JavaScript', 'JSX', 'Markdown', 'C(++)', 'LaTeX', 'Python', 'Julia', 'XML', 'Java', 'JSON', 'Ruby', and to reindent 'C(++)', 'Fortran', 'Java', 'Julia', 'Python', 'SAS', 'Scala', 'Shell', 'SQL' and "TypeScript". Two kinds of addins are provided: 'Prettify' and 'Indent'. The 'Indent' addins only reindent the code, while the 'Prettify' addins also modify the code, e.g. trailing semi-colons are added to 'JavaScript' code when they are missing. 
 License: GPL-3
 Encoding: UTF-8
 Imports: shiny, rstudioapi, tools, xml2, webdriver, XRJulia, httr, utils
@@ -36,4 +41,4 @@ Suggests:
     testthat
 URL: https://github.com/stla/prettifyAddins
 BugReports: https://github.com/stla/prettifyAddins/issues
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2

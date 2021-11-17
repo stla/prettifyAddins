@@ -1,5 +1,5 @@
 Name: Prettify (shiny)
-Description: Prettify JavaScript/JSX/TypeScript/HTML/CSS/SCSS/Markdown/YAML.
+Description: Prettify JavaScript/JSX/TypeScript/HTML/CSS/SCSS/Markdown/YAML/SQL.
 Binding: PrettifyShiny
 Interactive: true
 
@@ -9,7 +9,7 @@ Binding: IndentShiny
 Interactive: true
 
 Name: Prettify (V8)
-Description: Prettify JavaScript/JSX/TypeScript/HTML/CSS/SCSS/Markdown/YAML.
+Description: Prettify JavaScript/JSX/TypeScript/HTML/CSS/SCSS/Markdown/YAML/SQL.
 Binding: PrettifyV8
 Interactive: false
 

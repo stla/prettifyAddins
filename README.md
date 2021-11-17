@@ -70,6 +70,7 @@ It includes other open source software components:
 - **Prettier**, https://github.com/prettier/prettier
 - **indent.js**, https://github.com/zebzhao/indent.js
 - **CodeMirror**, https://github.com/codemirror/CodeMirror
+- **SQL Formatter**, https://github.com/zeroturnaround/sql-formatter
 
 Full copies of the license agreements used by these components are included
 in the file [LICENSE.note](https://github.com/stla/prettifyAddins/blob/master/LICENSE.note).

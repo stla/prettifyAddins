@@ -1,12 +1,22 @@
 function prettify(codeAndParserAndTabSize) {
   var prettyCode, error;
+  var parser = codeAndParserAndTabSize.parser;
   try {
-    prettyCode = prettier.format(codeAndParserAndTabSize.code, {
-      parser: codeAndParserAndTabSize.parser,
-      plugins: prettierPlugins,
-      trailingComma: "none",
-      tabWidth: codeAndParserAndTabSize.tabSize
-    });
+    if(parser === "sql"){
+      prettyCode = sqlFormatter.format(
+        codeAndParserAndTabSize.code,
+        {
+          indent: " ".repeat(codeAndParserAndTabSize.tabSize)
+        }
+      );
+    }else{
+      prettyCode = prettier.format(codeAndParserAndTabSize.code, {
+        parser: parser,
+        plugins: prettierPlugins,
+        trailingComma: "none",
+        tabWidth: codeAndParserAndTabSize.tabSize
+      });
+    }
     Shiny.setInputValue("prettyCode", prettyCode, { priority: "event" });
   } catch(err) {
     error = err.message;
