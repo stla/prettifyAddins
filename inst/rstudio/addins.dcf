@@ -52,3 +52,8 @@ Name: Prettify (formatCodeApi)
 Description: Prettify Java/JSON/Ruby.
 Binding: PrettifyFCA
 Interactive: false
+
+Name: Indent big HTML
+Description: Indent big HTML file.
+Binding: IndentBigHTML
+Interactive: false

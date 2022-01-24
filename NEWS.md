@@ -1,3 +1,6 @@
+# prettifyAddins 2.3.0.9000
+
+
 # prettifyAddins 2.3.0
 
 Better SQL formatter.
