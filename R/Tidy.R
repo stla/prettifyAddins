@@ -74,6 +74,7 @@ tidyHTML <- function(contents = NA, tabSize = NULL){
       sprintf("--tab-size %d", as.integer(tabSize)),
       "--tidy-mark no",
       "--show-info no",
+      "--quiet yes",
       tmpFile
     ),
     stdout = TRUE, stderr = TRUE

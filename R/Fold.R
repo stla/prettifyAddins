@@ -34,8 +34,8 @@ foldCode <- function(contents = NA){
     return(invisible())
   }else{
     if(isFile(contents)){
-      contents <- suppressWarnings(readLines(contents))
       ext <- file_ext(contents)
+      contents <- suppressWarnings(readLines(contents))
     }
   }
   tmpDir <- tempdir()
@@ -55,5 +55,5 @@ foldCode <- function(contents = NA){
       call. = TRUE
     )
   }
-  paste0(prettyCode, collapse = "\n")
+  paste0(foldedCode, collapse = "\n")
 }
