@@ -15,6 +15,11 @@
 #'
 #' @importFrom rstudioapi isAvailable
 #' @export
+#'
+#' @examples library(prettifyAddins)
+#' lorem <- stringi::stri_rand_lipsum(3)
+#' lorem
+#' cat(foldCode(lorem))
 foldCode <- function(contents = NA){
 
   if(Sys.which("fold") == ""){

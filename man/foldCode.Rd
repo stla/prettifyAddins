@@ -24,3 +24,9 @@ Fold any file (wrap lines to 80 characters). The result is
 This function requires the command line utility \code{fold}. You can
   find it in Rtools.
 }
+\examples{
+library(prettifyAddins)
+lorem <- stringi::stri_rand_lipsum(3)
+lorem
+cat(foldCode(lorem))
+}
