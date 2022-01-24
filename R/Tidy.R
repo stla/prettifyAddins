@@ -74,6 +74,7 @@ tidyHTML <- function(contents = NA, tabSize = NULL){
       sprintf("--tab-size %d", as.integer(tabSize)),
       "--tidy-mark no",
       "--show-info no",
+      "--show-warnings no",
       "--quiet yes",
       tmpFile
     ),
@@ -87,4 +88,19 @@ tidyHTML <- function(contents = NA, tabSize = NULL){
     )
   }
   paste0(tidyCode, collapse = "\n")
+}
+
+
+#' Indent big HTML file
+#' @description Indent a big HTML file.
+#'
+#' @inheritParams tidyHTML
+#'
+#' @return The indented code in a character string.
+#' @export
+#'
+#' @details This function calls \code{\link{tidyHTML}} followed by
+#'   \code{\link{foldCode}}.
+reindent_bigHTML <- function(contents = NA, tabSize = NULL){
+  foldCode(tidyHTML(contents, tabSize))
 }

@@ -14,7 +14,6 @@
 #'   find it in Rtools.
 #'
 #' @importFrom rstudioapi isAvailable
-#' @importFrom tools file_ext
 #' @export
 foldCode <- function(contents = NA){
 
@@ -28,18 +27,16 @@ foldCode <- function(contents = NA){
   if(isNA(contents) && isAvailable()){
     context <- RStudioContext()
     contents <- context[["contents"]]
-    ext <- "txt"
   }else if(isNA(contents)){
     stop("You have to provide something for the `contents` argument.")
     return(invisible())
   }else{
     if(isFile(contents)){
-      ext <- file_ext(contents)
       contents <- suppressWarnings(readLines(contents))
     }
   }
   tmpDir <- tempdir()
-  tmpFile <- tempfile(fileext = paste0(".", ext))
+  tmpFile <- tempfile(fileext = ".txt")
   writeLines(contents, tmpFile)
   foldedCode <- suppressWarnings(system2(
     "fold",
