@@ -185,3 +185,4 @@
 ^inst/shinyApp/www/codemirror/theme/zenburn\.css$
 ^CRAN-RELEASE$
 ^\.github$
+^inst/trash$

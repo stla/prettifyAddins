@@ -14,7 +14,7 @@ addins <- list(
   julia = function() prettifyJulia(),
   python = function() prettifyPython(),
   fca = function() prettify_FCA(),
-  bightml = function() foldCode(tidyHTML())
+  html = function() prettifyHTML()
 )
 
 #' @importFrom rstudioapi setDocumentContents
@@ -44,4 +44,4 @@ PrettifyLaTeX <- function() Addin(addins$latex)
 PrettifyJulia <- function() Addin(addins$julia)
 PrettifyPython <- function() Addin(addins$python)
 PrettifyFCA <- function() Addin(addins$fca)
-IndentBigHTML <- function() Addin(addins$bightml)
+PrettifyHTML <- function() Addin(addins$html)

@@ -53,7 +53,7 @@ Description: Prettify Java/JSON/Ruby.
 Binding: PrettifyFCA
 Interactive: false
 
-Name: Indent big HTML
-Description: Indent big HTML file.
-Binding: IndentBigHTML
+Name: Prettify big HTML
+Description: Prettify big HTML file.
+Binding: PrettifyHTML
 Interactive: false
