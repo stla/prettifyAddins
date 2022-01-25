@@ -1,8 +1,8 @@
 # prettifyAddins 2.4.0
 
-New function `prettifyHTML`, able to prettify voluminous HTML files (including 
-embedded CSS and JavaScript). It requires the command-line utility 
-`prettydiff`, available on **npm**.
+New function `prettifyHTML`, able to prettify voluminous HTML files including 
+the embedded CSS and JavaScript, e.g. 25 Mb. It requires the command-line 
+utility `prettydiff`, available on **npm**.
 
 
 # prettifyAddins 2.3.0
