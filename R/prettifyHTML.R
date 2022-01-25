@@ -61,9 +61,12 @@ prettifyHTML <- function(contents = NA, tabSize = NULL){
     }
   }
   tmpDir <- tempdir()
-  config <- sprintf(
-    '{"format_array": "inline", "indent_char": " ", "indent_size": %d}',
-    tabSize
+  config <- paste0(
+    '{"format_array": "inline", ',
+    '"indent_char": " ", ',
+    '"indent_size": ', tabSize, ', ',
+    '"variable_list": "list", ',
+    '"wrap": 80}'
   )
   writeLines(config, file.path(tmpDir, ".prettydiffrc"))
   tmpFile <- tempfile(fileext = paste0(".", ext))
