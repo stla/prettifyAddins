@@ -69,7 +69,7 @@ prettifyHTML <- function(contents = NA, tabSize = NULL){
   tmpFile <- tempfile(fileext = paste0(".", ext))
   writeLines(contents, tmpFile)
   prettyCode <- suppressWarnings(system2(
-    "prettydiff", "beautify", tmpFile,
+    "prettydiff", c("beautify", tmpFile),
     stdout = TRUE, stderr = TRUE
   ))
   if(!is.null(attr(prettyCode, "status"))){

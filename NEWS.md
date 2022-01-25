@@ -1,16 +1,8 @@
-# prettifyAddins 2.3.0.9000
+# prettifyAddins 2.4.0
 
-New functions:
-
-* `tidyHTML` to reindent a possiby big HTML file
-
-* `foldCode` to wrap any file, possibly big
-
-* `reindent_bigHTML`, which combines the two previous functions
-
-There's also a new addin *Indent big HTML* but it should be useless, because 
-opening a big file in RStudio is dangerous. Rather do 
-`cat(reindent_bigHTML("BigHTMLfile.html"), file = "BigHTMLfile_indented.html")`.
+New function `prettifyHTML`, able to prettify voluminous HTML files (including 
+embedded CSS and JavaScript). It requires the command-line utility 
+`prettydiff`, available on **npm**.
 
 
 # prettifyAddins 2.3.0
