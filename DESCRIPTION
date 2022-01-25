@@ -43,8 +43,7 @@ Suggests:
     shinythemes,
     shinyAce,
     miniUI,
-    testthat,
-    stringi
+    testthat
 URL: https://github.com/stla/prettifyAddins
 BugReports: https://github.com/stla/prettifyAddins/issues
 RoxygenNote: 7.1.2
