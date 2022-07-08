@@ -1,3 +1,8 @@
+# prettifyAddins 2.4.1
+
+Refreshed the Julia prettifier.
+
+
 # prettifyAddins 2.4.0
 
 New function `prettifyHTML`, able to prettify voluminous HTML files including 

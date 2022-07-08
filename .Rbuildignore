@@ -186,3 +186,4 @@
 ^CRAN-RELEASE$
 ^\.github$
 ^inst/trash$
+^CRAN-SUBMISSION$

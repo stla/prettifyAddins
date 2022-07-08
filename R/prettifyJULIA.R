@@ -67,7 +67,10 @@ prettifyJulia <- function(contents = NA, tabSize = NULL){
   tmpFile <- tempfile(fileext = ".jl")
   writeLines(contents, tmpFile)
   juliaEval(
-    sprintf('format_file("%s", indent = %d)', tmpFile, tabSize)
+    sprintf(
+      'format_file("%s"; indent = %d, margin = 80, trailing_comma = false)',
+      tmpFile, tabSize
+    )
   )
   prettyCode <- suppressWarnings(readLines(tmpFile))
   paste0(prettyCode, collapse = "\n")
