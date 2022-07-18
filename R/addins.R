@@ -5,7 +5,8 @@ addins <- list(
   ),
   v8 = list(
     prettify = function() prettify_V8(),
-    indent = function() reindent_V8()
+    indent = function() reindent_V8(),
+    wordWrap = function() wordWrap()
   ),
   xml = function() prettifyXML(),
   clang = function() prettifyCLANG(),
@@ -37,6 +38,7 @@ PrettifyShiny <- function() Addin(addins$shiny$prettify)
 IndentShiny <- function() Addin(addins$shiny$indent)
 PrettifyV8 <- function() Addin(addins$v8$prettify)
 IndentV8 <- function() Addin(addins$v8$indent)
+WordWrapV8 <- function() Addin(addins$v8$wordWrap)
 PrettifyXML <- function() Addin(addins$xml)
 PrettifyCLANG <- function() Addin(addins$clang)
 IndentPhantomJS <- function() Addin(addins$phantomjs)

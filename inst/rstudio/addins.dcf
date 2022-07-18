@@ -18,6 +18,11 @@ Description: Indent JavaScript/JSX/TypeScript/HTML/CSS/SCSS.
 Binding: IndentV8
 Interactive: false
 
+Name: Word wrap (V8)
+Description: Word-wrap text at 80 characters.
+Binding: WordWrapV8
+Interactive: false
+
 Name: Prettify C/C++/Java
 Description: Prettify C/C++/Java.
 Binding: PrettifyCLANG

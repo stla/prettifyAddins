@@ -361,3 +361,78 @@ reindent_V8 <- function(contents = NA, language = NA, tabSize = NULL){
   }
   result[["prettyCode"]]
 }
+
+#' Word wrap using V8
+#' @description Word wrap a text.
+#'
+#' @param contents the text to be wrapped; there are three possibilities for
+#'   this argument:
+#'   \code{NA} (default), to use the file currently opened in RStudio;
+#'   the path to a file;
+#'   or the code given as a character vector
+#' @param ncharacters target number of characters per line
+#'
+#' @return The wrapped text in a character string.
+#'
+#' @importFrom rstudioapi isAvailable
+#'
+#' @export
+wordWrap <- function(contents = NA, ncharacters = 80){
+
+  if(!requireNamespace("V8")){
+    stop("This function requires the 'V8' package.")
+  }
+
+  if(isNA(contents) && isAvailable()){
+    context <- RStudioContext()
+    contents <- context[["contents"]]
+  }else if(isNA(contents)){
+    stop("You have to provide something for the `contents` argument.")
+  }else{
+    if(isFile(contents)){
+      contents <- suppressWarnings(readLines(contents))
+    }
+  }
+  text <- paste0(contents, collapse = "\n")
+
+  jsfile <- system.file(
+    "libraries", "word-wrap-bundle.js", package = "prettifyAddins"
+  )
+
+  ctx <- V8::v8(console = FALSE)
+  tryCatch({
+    ctx$source(jsfile)
+  }, error = function(e){
+    stop(
+      "'V8' has failed to source some files. ",
+      "Probably your version of the 'V8' engine is not recent enough."
+    )
+  })
+
+  wrap <- paste0(
+    c(
+      "function wrap(text, nchar) {",
+      "  var newText = null, error = null;",
+      "  try {",
+      "    newText = wordWrap(text, {",
+      "      width: nchar,",
+      "      indent: ''",
+      "    });",
+      "  } catch(err) {",
+      "    error = err.message;",
+      "  }",
+      "  return {newText: newText, error: error};",
+      "}",
+      "var result = wrap(text, nchar);"
+    ),
+    collapse = "\n"
+  )
+  ctx$assign("text", text)
+  ctx$assign("nchar", ncharacters)
+  ctx$eval(wrap)
+  result <- ctx$get("result")
+  if(!is.null(err <- result[["error"]])){
+    stop(err)
+  }
+  result[["newText"]]
+}
