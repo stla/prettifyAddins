@@ -44,6 +44,7 @@ code <- c(
   'print "it is not one"'
 )
 
-\dontrun{
-cat(reindent_PhantomJS(code, "python"))}
+if(Sys.which("phantomjs") != "") {
+  cat(reindent_PhantomJS(code, "python"))
+}
 }

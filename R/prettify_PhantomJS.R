@@ -34,8 +34,9 @@
 #'   'print "it is not one"'
 #' )
 #'
-#' \dontrun{
-#' cat(reindent_PhantomJS(code, "python"))}
+#' if(Sys.which("phantomjs") != "") {
+#'   cat(reindent_PhantomJS(code, "python"))
+#' }
 reindent_PhantomJS <- function(contents = NA, language = NA, tabSize = NULL){
   if(Sys.which("phantomjs") == ""){
     stop(
