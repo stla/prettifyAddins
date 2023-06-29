@@ -11,6 +11,7 @@ addins <- list(
   xml = function() prettifyXML(),
   clang = function() prettifyCLANG(),
   phantomjs = function() reindent_PhantomJS(),
+  chromote = function() reindent_chromote(),
   latex = function() prettifyLaTeX(),
   julia = function() prettifyJulia(),
   python = function() prettifyPython(),
@@ -42,6 +43,7 @@ WordWrapV8 <- function() Addin(addins$v8$wordWrap)
 PrettifyXML <- function() Addin(addins$xml)
 PrettifyCLANG <- function() Addin(addins$clang)
 IndentPhantomJS <- function() Addin(addins$phantomjs)
+IndentChromote <- function() Addin(addins$chromote)
 PrettifyLaTeX <- function() Addin(addins$latex)
 PrettifyJulia <- function() Addin(addins$julia)
 PrettifyPython <- function() Addin(addins$python)

@@ -38,6 +38,11 @@ Description: Indent C/C++/Python/SQL and more.
 Binding: IndentPhantomJS
 Interactive: false
 
+Name: Indent (Chromote)
+Description: Indent C/C++/Python/SQL and more.
+Binding: IndentChromote
+Interactive: false
+
 Name: Prettify LaTeX
 Description: Prettify LaTeX/Sweave.
 Binding: PrettifyLaTeX
