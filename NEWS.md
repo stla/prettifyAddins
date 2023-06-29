@@ -1,3 +1,10 @@
+# prettifyAddins 2.6.0
+
+New function `reindent_chromote`. It is similar to `reindent_PhantomJS` but it 
+uses the 'chromote' package and not 'PhantomJS'. Allows to reindent C, C++, Java, 
+Fortran, Julia, Python, SAS, Scala, Shell, and SQL.
+
+
 # prettifyAddins 2.5.0
 
 - Refreshed the Julia prettifier.

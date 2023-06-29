@@ -2,7 +2,7 @@ Type: Package
 Package: prettifyAddins
 Title: 'RStudio' Addins to Prettify 'JavaScript', 'C++', 'Python', and
     More
-Version: 2.5.0
+Version: 2.5.0.9000
 Authors@R: c(
     person("Stéphane", "Laurent", , "laurent_step@outlook.fr", role = c("aut", "cre")),
     person("James Long and contributors", role = "cph",
@@ -29,7 +29,8 @@ Description: Provides 'RStudio' addins to prettify 'HTML', 'CSS', 'SCSS',
 License: GPL-3
 URL: https://github.com/stla/prettifyAddins
 BugReports: https://github.com/stla/prettifyAddins/issues
-Imports: 
+Imports:
+    chromote,
     httr,
     rstudioapi,
     shiny,
@@ -45,4 +46,4 @@ Suggests:
     testthat,
     V8
 Encoding: UTF-8
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.3

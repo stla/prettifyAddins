@@ -1,5 +1,5 @@
-#' Reindent code using PhantomJS
-#' @description Reindent some code using PhantomJS.
+#' Reindent code using chromote
+#' @description Reindent some code using chromote.
 #'
 #' @param contents the code to be reindented; there are three possibilities for
 #'   this argument:
@@ -19,10 +19,12 @@
 #'
 #' @return The reindented code in a character string.
 #'
-#' @note This function requires the 'phantomjs' command-line utility.
+#' @note This function requires 'Chrome' and the executable file 'chrome'
+#'   must be in the system path.
 #'
 #' @importFrom rstudioapi isAvailable
 #' @importFrom tools file_ext
+#' @import chromote
 #' @export
 #'
 #' @examples library(prettifyAddins)
@@ -35,12 +37,13 @@
 #' )
 #'
 #' \donttest{
-#' cat(reindent_PhantomJS(code, "python"))}
-reindent_PhantomJS <- function(contents = NA, language = NA, tabSize = NULL){
-  if(Sys.which("phantomjs") == ""){
+#' cat(reindent_chromote(code, "python"))}
+reindent_chromote <- function(contents = NA, language = NA, tabSize = NULL){
+
+  if(Sys.which("chrome") == ""){
     stop(
-      "This function requires the command line utility 'phantomjs'. ",
-      "See `?install_phantomjs` to install it."
+      "This function requires 'Chrome' and the executable file ",
+      "'chrome' must be in the path."
     )
   }
 
@@ -115,27 +118,48 @@ reindent_PhantomJS <- function(contents = NA, language = NA, tabSize = NULL){
   }
   mode <- file.path(folder, "mode", mode, paste0(mode, ".js"))
 
-  script <- system.file("PhantomJS", "script.js", package = "prettifyAddins")
+  chrm <- Chrome$new(
+    path = "chrome",
+    args = "--disable-gpu --headless --remote-debugging-port=9222"
+  )
+  chromote <- Chromote$new(browser = chrm)
+  session  <- ChromoteSession$new(parent = chromote)
+  ids <- session$Page$navigate("about:blank")
 
-  prettyCode <- suppressWarnings(system2(
-    "phantomjs",
-    c(
-      script,
-      codemirror,
-      formatting,
-      meta,
-      mode,
-      shQuote(code),
-      language,
-      tabSize
-    ),
-    stdout = TRUE, stderr = TRUE
-  ))
+  script <- paste0(readLines(codemirror), collapse = "\n")
+  . <- session$Runtime$evaluate(script)
+  script <- paste0(readLines(formatting), collapse = "\n")
+  . <- session$Runtime$evaluate(script)
+  script <- paste0(readLines(meta), collapse = "\n")
+  . <- session$Runtime$evaluate(script)
+  script <- paste0(readLines(mode), collapse = "\n")
+  . <- session$Runtime$evaluate(script)
 
-  if(!is.null(attr(prettyCode, "status"))){
-    stop("PhantomJS failed.")
+  . <- session$Page$setDocumentContent(
+    ids[["frameId"]],
+    html = sprintf("<textarea id='editor'>%s</textarea>", code)
+  )
+
+  . <- session$Runtime$evaluate(sprintf('
+var editor = CodeMirror.fromTextArea(
+  document.getElementById("editor"),
+  {
+    mode: "%s",
+    tabSize: %d,
+    indentUnit: %d
   }
+);
+CodeMirror.commands.selectAll(editor);
+editor.autoFormatRange(
+  editor.getCursor(true),
+  editor.getCursor(false)
+);
+editor.setCursor(0);
+', language, tabSize, tabSize))
 
-  paste0(prettyCode, collapse = "\n")
+  result <- session$Runtime$evaluate("editor.getValue();")
 
+  . <- session$close()
+
+  result$result$value
 }
