@@ -36,7 +36,7 @@
 #'   'print "it is not one"'
 #' )
 #'
-#' \donttest{
+#' \dontrun{
 #' cat(reindent_chromote(code, "python"))}
 reindent_chromote <- function(contents = NA, language = NA, tabSize = NULL){
 

@@ -45,6 +45,6 @@ code <- c(
   'print "it is not one"'
 )
 
-\donttest{
+\dontrun{
 cat(reindent_chromote(code, "python"))}
 }
