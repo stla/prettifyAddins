@@ -1,7 +1,7 @@
 # **prettifyAddins**
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/stla/prettifyAddins/workflows/R-CMD-check/badge.svg)](https://github.com/stla/prettifyAddins/actions)
+[![R-CMD-check](https://github.com/stla/prettifyAddins/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/stla/prettifyAddins/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ### RStudio addins to prettify JavaScript / HTML / CSS / Markdown / C++ and more.
