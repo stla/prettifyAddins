@@ -32,8 +32,11 @@ The reindented code in a character string.
 Reindent some code using chromote.
 }
 \note{
-This function requires 'Chrome' and the executable file 'chrome'
-  must be in the system path.
+This function uses \code{chromote::find_chrome()} to find the
+  executable of Google Chrome or another Chromium-based browser. If it is
+  not found you will get an error. In this case set the environment variable
+  \code{CHROMOTE_CHROME} to the path of such an executable
+  (e.g. \code{Sys.setenv(CHROMOTE_CHROME = "path/to/chrome.exe")}).
 }
 \examples{
 library(prettifyAddins)

@@ -1,3 +1,9 @@
+# prettifyAddins 2.6.0.9000
+
+The function `reindent_chromote` now uses `chromote::find_chrome` to find the 
+path of the executable of the browser.
+
+
 # prettifyAddins 2.6.0
 
 New function `reindent_chromote`. It is similar to `reindent_PhantomJS` but it 

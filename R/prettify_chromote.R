@@ -19,8 +19,11 @@
 #'
 #' @return The reindented code in a character string.
 #'
-#' @note This function requires 'Chrome' and the executable file 'chrome'
-#'   must be in the system path.
+#' @note This function uses \code{chromote::find_chrome()} to find the
+#'   executable of Google Chrome or another Chromium-based browser. If it is
+#'   not found you will get an error. In this case set the environment variable
+#'   \code{CHROMOTE_CHROME} to the path of such an executable
+#'   (e.g. \code{Sys.setenv(CHROMOTE_CHROME = "path/to/chrome.exe")}).
 #'
 #' @importFrom rstudioapi isAvailable
 #' @importFrom tools file_ext
@@ -39,12 +42,17 @@
 #' if(Sys.which("chrome") != "") {
 #'   cat(reindent_chromote(code, "python"))
 #' }
-reindent_chromote <- function(contents = NA, language = NA, tabSize = NULL){
+reindent_chromote <- function(contents = NA, language = NA, tabSize = NULL) {
 
-  if(Sys.which("chrome") == ""){
+  chromePath <- Sys.which("chrome")
+  if(is.null(chromePath)) {
+    chromePath <- find_chrome()
+  }
+  if(is.null(chromePath)){
     stop(
-      "This function requires 'Chrome' and the executable file ",
-      "'chrome' must be in the path."
+      "This function requires the Google Chrome browser or any Chromium-based ",
+      "browser and none has been found. Try setting the 'CHROMOTE_CHROME' ",
+      "environment variable to the path of an executable of such a browser."
     )
   }
 
@@ -120,7 +128,7 @@ reindent_chromote <- function(contents = NA, language = NA, tabSize = NULL){
   mode <- file.path(folder, "mode", mode, paste0(mode, ".js"))
 
   chrm <- Chrome$new(
-    path = "chrome",
+    path = chromePath,
     args = "--disable-gpu --headless --remote-debugging-port=9222"
   )
   chromote <- Chromote$new(browser = chrm)
@@ -159,8 +167,9 @@ editor.setCursor(0);
 ', language, tabSize, tabSize))
 
   result <- session$Runtime$evaluate("editor.getValue();")
+  value <- result$result$value
 
-  . <- session$close()
+  on.exit(session$close())
 
-  result$result$value
+  value
 }
