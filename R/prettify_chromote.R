@@ -168,8 +168,10 @@ editor.setCursor(0);
 
   result <- session$Runtime$evaluate("editor.getValue();")
   value <- result$result$value
-
-  on.exit(session$close())
+  . <- session$close()
+  # parentBrowser <- session$parent$get_browser()
+  # session$close()
+  # on.exit(parentBrowser$close())
 
   value
 }
