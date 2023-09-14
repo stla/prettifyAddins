@@ -7,7 +7,7 @@
 #'   semi-colons to JavaScript code when they are missing.
 #'
 #' @name prettifyAddins
-#' @docType package
+#' @aliases prettifyAddins-package
 #'
 #' @examples # get the list of supported languages:
 #' getPrettifiableLanguages()
